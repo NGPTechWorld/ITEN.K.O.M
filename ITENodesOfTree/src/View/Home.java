@@ -1,3 +1,5 @@
+package View;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,34 +19,35 @@ import Controller.TextFormatController;
 import Module.Node;
 import Module.TreeRectangel;
 
-public class Home extends JFrame{
+public class Home extends JFrame {
     TreeRectangel treeRec;
-    Home(){
+
+    public Home() {
         int rows = 10; // عدد الصفوف
         int columns = 20; // عدد الأعمدة
 
         char[][] charMatrix = new char[rows][columns];
-        treeRec=new TreeRectangel(); 
-        treeRec.root=new Node("--");
-        treeRec.root.leftChild=new Node("|");
-        treeRec.root.leftChild.rightChild=new Node("B",20,30);
-        treeRec.root.leftChild.leftChild=new Node("A",30,40);
-        treeRec.root.rightChild=new Node("C",50,20);
+        treeRec = new TreeRectangel();
+        treeRec.root = new Node("--");
+        treeRec.root.leftChild = new Node("|");
+        treeRec.root.leftChild.rightChild = new Node("B", 20, 30);
+        treeRec.root.leftChild.leftChild = new Node("A", 30, 40);
+        treeRec.root.rightChild = new Node("C", 50, 20);
         System.out.println(TextFormatController.export(treeRec.getRoot()));
         initComponents();
     }
-    
-    private void initComponents(){
+
+    private void initComponents() {
         setSize(1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.DARK_GRAY);
         setUndecorated(true);
         setLocationRelativeTo(null);
-        
-        JPanel menu=new JPanel();
-        JLabel nodeValueLabel=new JLabel("Enter Value Node:");
-        JLabel nodeWidthLabel=new JLabel("Enter Width Node:");
-        JLabel nodeHeightLabel=new JLabel("Enter Height Node:");
+
+        JPanel menu = new JPanel();
+        JLabel nodeValueLabel = new JLabel("Enter Value Node:");
+        JLabel nodeWidthLabel = new JLabel("Enter Width Node:");
+        JLabel nodeHeightLabel = new JLabel("Enter Height Node:");
         JTextField nodeValueField = new JTextField(10);
         JTextField nodeWidthField = new JTextField(10);
         JTextField nodeHeightField = new JTextField(10);
@@ -59,24 +62,23 @@ public class Home extends JFrame{
         nodeWidthLabel.setForeground(Color.LIGHT_GRAY);
         nodeHeightLabel.setForeground(Color.LIGHT_GRAY);
 
-        nodeValueLabel.setFont(new Font("Tajawal", 1,24));
-        nodeWidthLabel.setFont(new Font("Tajawal", 1,24));
-        nodeHeightLabel.setFont(new Font("Tajawal", 1,24));
-        nodeValueField.setFont(new Font("Tajawal", 1,20));
-        nodeWidthField.setFont(new Font("Tajawal", 1,20));
-        nodeHeightField.setFont(new Font("Tajawal", 1,20));
+        nodeValueLabel.setFont(new Font("Tajawal", 1, 24));
+        nodeWidthLabel.setFont(new Font("Tajawal", 1, 24));
+        nodeHeightLabel.setFont(new Font("Tajawal", 1, 24));
+        nodeValueField.setFont(new Font("Tajawal", 1, 20));
+        nodeWidthField.setFont(new Font("Tajawal", 1, 20));
+        nodeHeightField.setFont(new Font("Tajawal", 1, 20));
 
         nodeValueLabel.setHorizontalAlignment(0);
         nodeWidthLabel.setHorizontalAlignment(0);
         nodeHeightLabel.setHorizontalAlignment(0);
 
-
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        //System.out.println(treeRec.getRoot().getValue());
-        BinaryTreePanel binaryTreePanel=new BinaryTreePanel(treeRec);
-        
-        panel.setBounds(0,0,1000, 720);
+        // System.out.println(treeRec.getRoot().getValue());
+        BinaryTreePanel binaryTreePanel = new BinaryTreePanel(treeRec);
+
+        panel.setBounds(0, 0, 1000, 720);
         JButton addButton = new JButton("Add Node");
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +87,7 @@ public class Home extends JFrame{
                     String value = (nodeValueField.getText());
                     int width = Integer.parseInt(nodeWidthField.getText());
                     int height = Integer.parseInt(nodeHeightField.getText());
-                ///reeRec.addNode(value,width,height);   Add node
+                    /// reeRec.addNode(value,width,height); Add node
                     binaryTreePanel.repaint();
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Please enter a valid integer value.");
@@ -97,9 +99,9 @@ public class Home extends JFrame{
         });
         addButton.setBounds(40, 510, 200, 50);
         addButton.setBackground(Color.LIGHT_GRAY);
-        
-        menu.setBackground(Color.DARK_GRAY); 
-        menu.setBounds(1000,0,280, 720);
+
+        menu.setBackground(Color.DARK_GRAY);
+        menu.setBounds(1000, 0, 280, 720);
         menu.setSize(280, 720);
         menu.setLayout(null);
         menu.add(addButton);
@@ -110,8 +112,8 @@ public class Home extends JFrame{
         menu.add(nodeHeightLabel);
         menu.add(nodeHeightField);
         menu.setVisible(true);
-        
-        //binaryTreePanel.setBackground(Color.BLACK);
+
+        // binaryTreePanel.setBackground(Color.BLACK);
         setLayout(null);
         add(menu);
         panel.add(binaryTreePanel);
@@ -119,6 +121,7 @@ public class Home extends JFrame{
         add(panel);
         setVisible(true);
     }
+
     public static void main(String[] args) {
         new Home();
     }

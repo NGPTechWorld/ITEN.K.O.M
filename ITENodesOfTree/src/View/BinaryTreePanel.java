@@ -1,3 +1,5 @@
+package View;
+
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -11,7 +13,7 @@ class BinaryTreePanel extends JPanel {
 
     public BinaryTreePanel(TreeRectangel treeRec) {
         this.treeRec = treeRec;
-        //System.out.println(treeRec.getRoot().getValue());
+        // System.out.println(treeRec.getRoot().getValue());
         setSize(1000, 720);
         setLayout(null);
     }

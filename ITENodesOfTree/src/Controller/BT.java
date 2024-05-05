@@ -89,4 +89,36 @@ public class BT {
     static boolean Invalid(char x) {
         return (x == '(' || x == ')' || x == '[' || x == ']' || (x >= '0' && x <= '9') || x == ',' || x == ' ');
     }
+
+    // AlZero***********************************
+    // rotate
+    public void rotate() {
+        rotate(root);
+    }
+
+    private void rotate(Node root) {
+        if (root == null)
+            return;
+
+        if (root.value.equals("|")) {
+            root.value = "-";
+            int temp = 0;
+            temp = root.width;
+            root.width = root.height;
+            root.height = temp;
+        } else if (root.value.equals("-") || root.value.equals("–")) {
+            root.value = "|";
+            int temp = 0;
+            temp = root.width;
+            root.width = root.height;
+            root.height = temp;
+        } else {
+            int temp = 0;
+            temp = root.width;
+            root.width = root.height;
+            root.height = temp;
+        }
+        rotate(root.leftChild);
+        rotate(root.rightChild);
+    }
 }

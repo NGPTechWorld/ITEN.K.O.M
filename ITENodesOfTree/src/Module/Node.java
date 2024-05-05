@@ -1,23 +1,28 @@
 package Module;
 
 public class Node {
-    private String value;
+    public String value;
     public Node leftChild;
     public Node rightChild;
-    public int width,height;
+    public int width, height;
+
+    public Node() {
+    }
+
     public Node(String value) {
         this.value = value;
         leftChild = null;
         rightChild = null;
-        this.height=0;
-        this.width=0;
+        this.height = 0;
+        this.width = 0;
     }
-    public Node(String value,int width,int height) {
+
+    public Node(String value, int width, int height) {
         this.value = value;
         leftChild = null;
         rightChild = null;
-        this.height=height;
-        this.width=width;
+        this.height = height;
+        this.width = width;
     }
 
     public String getValue() {

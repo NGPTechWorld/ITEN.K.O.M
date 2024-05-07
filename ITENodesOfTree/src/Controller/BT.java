@@ -151,4 +151,43 @@ public class BT {
 
     }
 
+    // AlZero****************************************
+    // to check merge all the tree
+    public void checkMerge() {
+        checkMerge(root);
+    } // just call it in main without passing parameter
+
+    private void checkMerge(Node root) {
+        // Tree is empty
+        if (root == null) {
+            System.out.println("The tree is empty");
+            return;
+        }
+
+        // to check leaf
+        if (root.rightChild == null && root.leftChild == null) {
+            return;
+        }
+
+        // recursive //check all the tree
+        checkMerge(root.leftChild);
+        checkMerge(root.rightChild);
+
+        // Check merge leftChild with rightChild
+        if (root.value.equals("-") || root.value.equals("–")) {
+            if (root.leftChild.width == root.rightChild.width) {
+                System.out.println("you can merge " + root.leftChild.value + " and " + root.rightChild.value);
+            } else {
+                System.out.println("you can't merge " + root.leftChild.value + " and " + root.rightChild.value);
+            }
+        } else // "|"
+        {
+            if (root.leftChild.height == root.rightChild.height) {
+                System.out.println("you can merge " + root.leftChild.value + " and " + root.rightChild.value);
+            } else {
+                System.out.println("you can't merge " + root.leftChild.value + " and " + root.rightChild.value);
+            }
+        }
+
+    }
 }

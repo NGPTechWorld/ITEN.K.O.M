@@ -97,6 +97,7 @@ public class BT {
     }
 
     private void rotate(Node root) {
+
         if (root == null)
             return;
 
@@ -121,4 +122,33 @@ public class BT {
         rotate(root.leftChild);
         rotate(root.rightChild);
     }
+
+    // AlZero *********************************
+    // check merge two Nodes
+    public boolean checkMergeTwoNodes(Node leftChild, Node rightChild) {
+        // Tree is empty
+        if (root == null) {
+            System.out.println("the tree is empty");
+            return false;
+        }
+
+        // check leaf
+        if (rightChild == null || leftChild == null) {
+            return false;
+        }
+
+        // Check merge leftChild with rightChild
+        if (leftChild.width == rightChild.width) {
+            System.out.println("you can merge " + leftChild.value + " and " + rightChild.value);
+            return true;
+        } else if (leftChild.height == rightChild.height) {
+            System.out.println("you can merge " + leftChild.value + " and " + rightChild.value);
+            return true;
+        } else {
+            System.out.println("you can't merge " + leftChild.value + " and " + rightChild.value);
+            return false;
+        }
+
+    }
+
 }

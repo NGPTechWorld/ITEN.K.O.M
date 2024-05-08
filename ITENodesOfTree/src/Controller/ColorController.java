@@ -30,10 +30,10 @@ public class ColorController {
         return Color.decode("#49243E");
     }
     //---------prime
-    public static Color black(){
+    public static Color getBlackColor(){
         return Color.black;
     }
-    public static Color white(){
+    public static Color getWhiteColor(){
         return Color.white;
     }
 }

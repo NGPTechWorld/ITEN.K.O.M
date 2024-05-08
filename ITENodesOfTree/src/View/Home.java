@@ -1,16 +1,6 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.plaf.metal.MetalIconFactory.TreeFolderIcon;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 import Controller.RectangleFormatController;
 import Controller.TextFormatController;
@@ -20,10 +10,6 @@ import Module.TreeRectangel;
 public class Home extends JFrame{
     TreeRectangel treeRec;
     Home(){
-        int rows = 10; // عدد الصفوف
-        int columns = 20; // عدد الأعمدة
-
-        char[][] charMatrix = new char[rows][columns];
         treeRec=new TreeRectangel(); 
         treeRec.root=new Node("--");
         treeRec.root.leftChild=new Node("|");

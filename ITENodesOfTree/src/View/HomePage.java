@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-import Controller.ColorController;
+import Controller.*;
 
 public class HomePage extends JFrame{
     HomePage(){
@@ -27,10 +27,9 @@ public class HomePage extends JFrame{
         };
         backgroundPanel.setLayout(null);
         //------------------------------------
-        JLabel titleApp=new JLabel("ITE Nodes Of Tree");
-        
-
-
+        JLabel titleApp=LabelController.addLabel("ITE Nodes Of Tree",FontController.getPrimaryFont(1, 33), 0, 0, 1280, 50);
+        titleApp.setForeground(ColorController.getWhiteColor());
+        add(titleApp);
 
 
         add(backgroundPanel);

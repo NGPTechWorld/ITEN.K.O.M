@@ -1,12 +1,9 @@
 package View;
-
 import java.awt.*;
 import javax.swing.*;
-
 import Controller.*;
-
 public class HomePage extends JFrame {
-    HomePage() {
+    public HomePage() {
         initComponents();
     }
 

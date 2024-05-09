@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import java.awt.Image;
 
 public class ImageController {
-    static String imagesPath = "src\\main\\resources\\images\\";
+    static String imagesPath = "resources\\images\\";
     public static ImageIcon getITEBestIcon(int width,int height){
         String imagePath = imagesPath + "ITEBestIcon.png";
         ImageIcon imageIcon = new ImageIcon(imagePath);

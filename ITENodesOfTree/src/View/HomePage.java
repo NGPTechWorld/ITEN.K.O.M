@@ -38,14 +38,28 @@ public class HomePage extends JFrame {
         JPanel addRectangelFill=PanelsController.roundedBorder(60);
         addRectangelFill.setName("addRectangelFill");
         addRectangelFill.setOpaque(false);
+        //addRectangelFill.setBackground(ColorController.getWhiteColor());
+        addRectangelFill.setLayout(new BorderLayout());
         addRectangelFill.setBounds(200, 150, 300, 450);
+        addRectangelFill.add(ImageController.addPhoto("addtreefill.png",270,405),BorderLayout.CENTER);
+        JLabel titleBoxleft = LabelController.addLabel("Add Complete Rectangle", FontController.getPrimaryFont(1, 28), 160, 625,
+                400, 50);
+        titleBoxleft.setForeground(ColorController.getWhiteColor());
+        backgroundPanel.add(titleBoxleft);
         MainPanels.addPanel(addRectangelFill);
         backgroundPanel.add(addRectangelFill);
 
         JPanel addRectangeNodes=PanelsController.roundedBorder(60);
         addRectangeNodes.setName("addRectangelFill");
         addRectangeNodes.setOpaque(false);
+        //addRectangeNodes.setBackground(ColorController.getWhiteColor());
+        addRectangeNodes.setLayout(new BorderLayout());
         addRectangeNodes.setBounds(800, 150, 300, 450);
+        addRectangeNodes.add(ImageController.addPhoto("addnodes.png",294,441),BorderLayout.CENTER);
+        JLabel titleBoxright = LabelController.addLabel("Add List Rectangles", FontController.getPrimaryFont(1, 28), 750, 625,
+                400, 50);
+        titleBoxright.setForeground(ColorController.getWhiteColor());
+        backgroundPanel.add(titleBoxright);
         MainPanels.addPanel(addRectangeNodes);
         backgroundPanel.add(addRectangeNodes);
         add(backgroundPanel);

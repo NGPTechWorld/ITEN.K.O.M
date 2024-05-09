@@ -10,17 +10,17 @@ public class ITENodsOfTree {
         dfs(node.rightChild);
     }
     public static void main(String[] args) {
-        String s="";
-        TextFormatController.Import("(( ( A[1,1] | ( B[1,1] | C[1,1] ) ) - ( D[3,1] - E[3,100] ) ) | F[2,102])");
-        //System.out.println(TextFormatController.root.value);
-        dfs(TextFormatController.root);
-        RectangleFormatController.Export(TextFormatController.root);
-        System.out.println();
-        RectangleFormatController.print();
-        RectangleFormatController.fillTextFile();
+        // String s="";
+        // TextFormatController.Import("(( ( A[1,1] | ( B[1,1] | C[1,1] ) ) - ( D[3,1] - E[3,100] ) ) | F[2,102])");
+        // //System.out.println(TextFormatController.root.value);
+        // dfs(TextFormatController.root);
+        // RectangleFormatController.Export(TextFormatController.root);
+        // System.out.println();
+        // RectangleFormatController.print();
+        // RectangleFormatController.fillTextFile();
         //RectangleFormatController.Export(TextFormatController.root);
         //System.out.println(TextFormatController.export(TextFormatController.root));
-        //new HomePage();
+        new HomePage();
         // Node root=new Node("-",70,60);
         // root.leftChild=new Node("|",70,10);
         // root.leftChild.leftChild=new Node("A",20,10);

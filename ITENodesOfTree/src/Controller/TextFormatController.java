@@ -16,13 +16,13 @@ public class TextFormatController {
         
     }
     //---Import---
-    private int[] sum;
-    private String tree;
-    public Node root;
+    private static int[] sum;
+    private static String tree;
+    public static Node root;
     final static int INF = 10000;
 
-    public void Import(String s) {
-        this.tree = s;
+    public static void Import(String s) {
+        tree = s;
         sum = new int[tree.length()];
         for (int i = 0; i < tree.length(); i++) {
             if (tree.charAt(i) == '(')
@@ -39,7 +39,7 @@ public class TextFormatController {
         root = build(0, tree.length() - 1);
     }
 
-    private int Min(int left, int right) {
+    private static int Min(int left, int right) {
         int index = -1;
         for (int i = left; i <= right; i++) {
             if ((tree.charAt(i) == '|' || tree.charAt(i) == '–' || tree.charAt(i) == '-') && index == -1) {
@@ -59,7 +59,7 @@ public class TextFormatController {
         return index;
     }
 
-    private Node build(int left, int right) {
+    private static Node build(int left, int right) {
         int Index = Min(left, right);
         Node node = new Node();
         if (tree.charAt(Index) != '|' && tree.charAt(Index) != '–' && tree.charAt(Index) != '-') {
@@ -91,7 +91,7 @@ public class TextFormatController {
         return node;
     }
 
-    private boolean Invalid(char x) {
+    private static boolean Invalid(char x) {
         return (x == '(' || x == ')' || x == '[' || x == ']' || (x >= '0' && x <= '9') || x == ',' || x == ' ');
     }
 }

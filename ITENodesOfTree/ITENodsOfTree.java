@@ -1,9 +1,13 @@
-import Controller.RectangleFormatController;
+import Controller.*;
 import Module.Node;
 import View.*;
 public class ITENodsOfTree {
     public static void main(String[] args) {
-        new HomePage();
+        String s="((A[1,1]|(B[1,1]|C[1,1]))-(D[3,1]-E[3,100]))|F[2,102]";
+        TextFormatController.Import(s);
+        //RectangleFormatController.Export(TextFormatController.root);
+        System.out.println(TextFormatController.export(TextFormatController.root));
+        //new HomePage();
         // Node root=new Node("-",70,60);
         // root.leftChild=new Node("|",70,10);
         // root.leftChild.leftChild=new Node("A",20,10);
@@ -15,7 +19,7 @@ public class ITENodsOfTree {
         // root.rightChild.rightChild=new Node("-",40,50);
         // root.rightChild.rightChild.leftChild=new Node("E",40,30);
         // root.rightChild.rightChild.rightChild=new Node("F",40,20);
-
+        // RectangleFormatController.Export(root);
         // for (int i = 0; i < 100; i++) {
         //     for (int j = 0; j < 100;j++) {
         //         RectangleFormatController.rectangel[i][j]=' ';

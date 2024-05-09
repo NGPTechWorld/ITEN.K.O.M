@@ -1,134 +1,110 @@
-package Controller;
+// package Controller;
 
-import java.awt.List;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+// import java.awt.List;
+// import java.io.FileNotFoundException;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.io.PrintWriter;
 
-import Module.Node;
+// import Module.Node;
 
-public class RectangleFormatController {
-    public static char rectangel[][]=new char[100][100];
-    static int maxW=0;
-    public static void drawRec(Node node,int inW,int inH){
-        int w=node.width;
-        int h=node.height;
-        int i =0;
-        for (i= 1; i < w; i++) {
-            if(rectangel[inH][i+inW]==' ')
-            rectangel[inH][i+inW]='-';
-            if(rectangel[inH+h-1][i+inW]==' ')
-            rectangel[inH+h-1][i+inW]='-';
-        }
-        System.out.println("I valu= "+(i-1));
-        int m=0;
-        for ( m= 0; m < h; m++) {
-            if(rectangel[m+inH][inW]==' ')
-            rectangel[m+inH][inW]='|';
-            if(rectangel[m+inH][inW+w]==' ')
-            rectangel[m+inH][inW+w]='|';
-            // for (int j = 1; j <w+1 ; j++) {
-            //     rectangel[i+inH][j+inW]=' ';
-            // }
-        }
-        System.out.println("I valu= "+(i-1)+"  H valu= "+(m));
-        for (int k = 0; k < 100; k++) {
-            for (int j = 0; j < 100;j++) {
-                System.out.print(rectangel[k][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("================");
-        if (maxW<inW+w) {
-            maxW=inW+w;
-        }
-        return;
-    }
-    static int W=0,H=0;
-    public static void export(Node node,Node father){
-        if(node==null)return;
-        export(node.leftChild,node);
-        int w=node.width;
-        int h=node.height;
-        System.out.println("W="+w+" H="+h +node.value);
-        System.out.println(W+" | "+H);
-        if(node.leftChild==null&& node.rightChild==null){
-            drawRec(node,W,H);
-            //System.out.println(father.value);
-        }
-        export(node.rightChild,node);
-        if(father!=null)
-        if(father.value=="|"){
-            W+=w;
-        }else if(father.value=="-"){
-            H+=(h-1);W=maxW-w;
-            System.out.println("HHHHHHHHHHH");
-        }
-    }
-    // public static void drawRec(int width,int height){
-    //     PrintWriter writer = null;
-    //     try {
-    //         writer = new PrintWriter("empty_rectangle.txt");
-    //         // رسم الحدود العلوية
-    //         for (int i = 0; i < width; i++) {
-    //             writer.print("-");
-    //         }
-    //         writer.println();
-    //         // رسم الجدران الجانبية
-    //         for (int i = 2; i < height; i++) {
-    //             writer.print("|");
-    //             for (int j = 2; j < width; j++) {
-    //                 writer.print(" ");
-    //             }
-    //             writer.println("|");
-    //         }
+// public class RectangleFormatController {
+// public void Import(String[] c){
+// rectangle = c;
+// root = build(0,0,c.length - 1 , c[0].length() - 1);
+// }
+// Node build(int x1,int y1,int x2,int y2){
+// Node node = new Node();
+// for(int i=x1+1;i<x2;i++){
+// boolean tmp = true;
+// for (int j=y1+1;j<y2;j++){
+// if(rectangle[i].charAt(j)!='-'){
+// tmp = false;
+// break;
+// }
+// }
+// if(tmp){
+// node.name = String.valueOf('-');
+// node.width = (y2 - y1 - 1);
+// node.right = build(i,y1,x2,y2);
+// node.left = build(x1,y1,i,y2);
+// node.length = node.right.length + node.left.length + 1;
+// return node;
+// }
+// }
+// for(int j=y1+1;j<y2;j++){
+// boolean tmp = true;
+// for (int i=x1+1;i<x2;i++){
+// if(rectangle[i].charAt(j)!='|'){
+// tmp = false;
+// break;
+// }
+// }
+// if(tmp){
+// node.name = String.valueOf('|');
+// node.length = (x2 - x1 - 1);
+// node.right = build(x1,j,x2,y2);
+// node.left = build(x1,y1,x2,j);
+// node.width = node.right.width + node.left.width + 1;
+// return node;
+// }
+// }
+// node.name="";
+// for(int i=x1+1;i<x2;i++){
+// for (int j=y1+1;j<y2;j++){
+// if(!Invalid(rectangle[i].charAt(j))){
+// node.name += rectangle[i].charAt(j);
+// }
+// }
+// }
+// node.length = (x2 - x1 - 1);
+// node.width = (y2 - y1 - 1);
+// return node;
+// }
+// void print(){
+// for(int i=0;i<=root.length+1;i++)
+// {
+// for(int j=0;j<= root.width+1;j++)
+// System.out.print(rec[i][j]);
+// System.out.println();
+// }
+// }
+// public void Export(){
+// rec = new char[root.length + 2][root.width + 2];
+// for(int i=0;i<=root.length+1;i++)
+// for(int j=0;j<=root.width+1;j++)
+// rec[i][j]=' ';
+// for(int i=0;i<= root.length+1;i++)
+// rec[i][0] = rec[i][root.width+1] = '|';
+// for (int i=1; i<= root.width;i++)
+// rec[0][i] = rec[root.length+1][i] = '-';
+// buildRec(1,1,root);
+// }
+// void buildRec(int x,int y,Node node){
+// if(!node.name.equals("-") && !node.name.equals("|")){
+// int in=0;
+// for(int i=x;i<x+node.width;i++)
+// for(int j=y;j<y+node.length && in<node.name.length();j++,in++)
+// if(rec[i][j]==' ')
+// rec[i][j] = node.name.charAt(in);
+// print();
+// return;
+// }
+// if(node.name.equals("|")){
+// for(int i=x;i<x+node.length;i++)
+// rec[i][y+node.left.width] = '|';
+// print();
+// buildRec(x,y,node.left);
+// buildRec(x,y+node.left.width+1,node.right);
+// }
+// else{
+// for(int i=y;i<y+node.width;i++)
+// rec[x+node.left.length][i]='-';
+// print();
+// buildRec(x,y,node.left);
+// buildRec(x+node.left.length+1,y,node.right);
+// }
+// }
+// }
 
-    //         // رسم الحدود السفلية
-    //         for (int i = 0; i < width; i++) {
-    //             writer.print("-");
-    //         }
-    //         writer.println();
-    //     } catch (FileNotFoundException e) {
-    //         e.printStackTrace();
-    //     } finally {
-    //         if (writer != null) {
-    //             writer.close(); // إغلاق الملف بعد الانتهاء
-    //         }
-    //     }
-
-    // }
-    // public static void drawRectangle(char[][] matrix, int startRow, int startCol, int height, int width, char symbol) {
-    //     for (int i = startRow; i < startRow + height; i++) {
-    //         for (int j = startCol; j < startCol + width; j++) {
-    //             // التحقق من أن الصف والعمود داخل حدود المصفوفة
-    //             if (i >= 0 && i < matrix.length && j >= 0 && j < matrix[0].length) {
-    //                 matrix[i][j] = symbol;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // // طباعة المصفوفة المحارفية في ملف نصي
-    // public static void printMatrixToFile(char[][] matrix, String fileName) {
-    //     PrintWriter writer = null;
-
-    //     try {
-    //         writer = new PrintWriter(fileName);
-
-    //         // طباعة المصفوفة المحارفية
-    //         for (int i = 0; i < matrix.length; i++) {
-    //             for (int j = 0; j < matrix[0].length; j++) {
-    //                 writer.print(matrix[i][j]);
-    //             }
-    //             writer.println();
-    //         }
-    //     } catch (FileNotFoundException e) {
-    //         e.printStackTrace();
-    //     } finally {
-    //         if (writer != null) {
-    //             writer.close(); // إغلاق الملف بعد الانتهاء
-    //         }
-    //     }
-    // }
-}
+// }

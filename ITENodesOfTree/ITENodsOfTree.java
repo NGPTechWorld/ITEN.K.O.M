@@ -2,11 +2,24 @@ import Controller.*;
 import Module.Node;
 import View.*;
 public class ITENodsOfTree {
+    public static void dfs(Node node) {
+        if (node == null)
+            return;
+        System.out.print(node.value + " ");
+        dfs(node.leftChild);
+        dfs(node.rightChild);
+    }
     public static void main(String[] args) {
-        String s="((A[1,1]|(B[1,1]|C[1,1]))-(D[3,1]-E[3,100]))|F[2,102]";
-        TextFormatController.Import(s);
+        String s="";
+        TextFormatController.Import("(( ( A[1,1] | ( B[1,1] | C[1,1] ) ) - ( D[3,1] - E[3,100] ) ) | F[2,102])");
+        //System.out.println(TextFormatController.root.value);
+        dfs(TextFormatController.root);
+        RectangleFormatController.Export(TextFormatController.root);
+        System.out.println();
+        RectangleFormatController.print();
+        RectangleFormatController.fillTextFile();
         //RectangleFormatController.Export(TextFormatController.root);
-        System.out.println(TextFormatController.export(TextFormatController.root));
+        //System.out.println(TextFormatController.export(TextFormatController.root));
         //new HomePage();
         // Node root=new Node("-",70,60);
         // root.leftChild=new Node("|",70,10);

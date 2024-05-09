@@ -78,7 +78,7 @@ public class BT {
         return node;
     }
 
-    public void dfs(Node node) {
+    public  void dfs(Node node) {
         if (node == null)
             return;
         System.out.print(node.value + " ");

@@ -1,11 +1,18 @@
 package Controller;
 
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import Module.Node;
 
 public class RectangleFormatController {
     public static String[] rectangle;
     public static char[][] rec;
+    public static Node root;
+    static int sizeW=1,sizeH=1;
+
     //----------Import----------------------
     public static void Import(String[] c,Node root){
         rectangle = c;
@@ -60,7 +67,8 @@ public class RectangleFormatController {
         return node;
     }
     //----------Export----------------------
-    public static void Export(Node root){
+    public static void Export(Node node){
+        root=node;
         rec = new char[root.height + 2][root.width + 2];
         for(int i=0;i<=root.height+1;i++)
             for(int j=0;j<=root.width+1;j++)
@@ -76,28 +84,28 @@ public class RectangleFormatController {
         if(!node.value.equals("-") && !node.value.equals("|")){
             int in=0;
             for(int i=x;i<x+node.width;i++)
-                for(int j=y;j<y+node.height && in<node.value.length();j++,in++)
+                for(int j=y;j<y+node.height && in<node.value.length();j++,in++) 
                     if(rec[i][j]==' ')
                         rec[i][j] = node.value.charAt(in);
-            print(node);
+            //print();
             return;
         }
         if(node.value.equals("|")){
             for(int i=x;i<x+node.height;i++)
                 rec[i][y+node.leftChild.width] = '|';
-            print(node);
+            //print();
             buildRec(x,y,node.leftChild);
             buildRec(x,y+node.leftChild.width+1,node.rightChild);
         }
         else{
             for(int i=y;i<y+node.width;i++)
             rec[x+node.leftChild.height][i]='-';
-            print(node);
+            //print();
             buildRec(x,y,node.leftChild);
             buildRec(x+node.leftChild.height+1,y,node.rightChild);
         }
     }
-    static void print(Node root){
+    public static void print(){
         for(int i=0;i<=root.height+1;i++)
             {
         for(int j=0;j<= root.width+1;j++)
@@ -107,6 +115,26 @@ public class RectangleFormatController {
     }
     static boolean Invalid(char x) {
         return (x == '(' || x == ')' || x == '[' || x == ']' || (x >= '0' && x <= '9') || x == ',' || x == ' ');
+    }
+    public static void fillTextFile(){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+
+            // Write each character array to the file
+            for (char[] row : rec) {
+                for (char ch : row) {
+                    writer.write(ch);
+                }
+                writer.newLine(); // Write a new line after each row
+            }
+
+            // Close the writer
+            writer.close();
+            System.out.println("Successfully wrote the character array to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
     }
 }
 

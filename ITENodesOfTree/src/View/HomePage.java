@@ -38,7 +38,7 @@ public class HomePage extends JFrame {
         JPanel addRectangelFill=PanelsController.roundedBorder(60);
         addRectangelFill.setName("addRectangelFill");
         addRectangelFill.setOpaque(false);
-        //addRectangelFill.setBackground(ColorController.getWhiteColor());
+        addRectangelFill.setBackground(Color.decode("#EEEEEE"));
         addRectangelFill.setLayout(new BorderLayout());
         addRectangelFill.setBounds(200, 150, 300, 450);
         addRectangelFill.add(ImageController.addPhoto("addtreefill.png",270,405),BorderLayout.CENTER);
@@ -46,13 +46,12 @@ public class HomePage extends JFrame {
                 400, 50);
         titleBoxleft.setForeground(ColorController.getWhiteColor());
         backgroundPanel.add(titleBoxleft);
-        MainPanels.addPanel(addRectangelFill);
-        backgroundPanel.add(addRectangelFill);
+        
 
         JPanel addRectangeNodes=PanelsController.roundedBorder(60);
         addRectangeNodes.setName("addRectangelFill");
         addRectangeNodes.setOpaque(false);
-        //addRectangeNodes.setBackground(ColorController.getWhiteColor());
+        addRectangeNodes.setBackground(Color.decode("#EEEEEE"));
         addRectangeNodes.setLayout(new BorderLayout());
         addRectangeNodes.setBounds(800, 150, 300, 450);
         addRectangeNodes.add(ImageController.addPhoto("addnodes.png",294,441),BorderLayout.CENTER);
@@ -60,8 +59,14 @@ public class HomePage extends JFrame {
                 400, 50);
         titleBoxright.setForeground(ColorController.getWhiteColor());
         backgroundPanel.add(titleBoxright);
+        PanelsController.addActionPanel(addRectangeNodes, "RecNode");
+        PanelsController.addActionPanel(addRectangelFill, "RecFill");
+        MainPanels.addPanel(addRectangelFill);
+        backgroundPanel.add(addRectangelFill);
         MainPanels.addPanel(addRectangeNodes);
         backgroundPanel.add(addRectangeNodes);
+
+
         add(backgroundPanel);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         setVisible(true);

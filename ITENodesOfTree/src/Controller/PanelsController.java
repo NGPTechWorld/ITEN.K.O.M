@@ -31,7 +31,9 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
-                    
+                    case "RectangelComplete":
+                        switchPanels("RectangleComplete");
+                    break;
                     default:
                         //switchPanels(action);
                         break;

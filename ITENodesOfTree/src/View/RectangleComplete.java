@@ -12,6 +12,7 @@ import Controller.LabelController;
 import Controller.PanelsController;
 
 public class RectangleComplete extends JPanel{
+    public static JLabel iconExit;
     public RectangleComplete(){
         initComponents();
     }
@@ -21,9 +22,9 @@ public class RectangleComplete extends JPanel{
         setLayout(null);
         setOpaque(false);
         JLabel titlePage = LabelController.addLabel("Add Rectangle Complete", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
-        JLabel titleBoxleft = LabelController.addLabel("Tree Rectangle", FontController.getPrimaryFont(1, 28), 90, 600,300, 50);
-        JLabel titleBoxcenter = LabelController.addLabel("Drow Rectangle", FontController.getPrimaryFont(1, 28), 450, 600,400, 50);
-        JLabel titleBoxright = LabelController.addLabel("Text Rectangle", FontController.getPrimaryFont(1, 28), 850, 600,400, 50);
+        JLabel titleBoxleft = LabelController.addLabel("Tree Rectangle", FontController.getPrimaryFont(1, 28), 890, 600,300, 50);
+        JLabel titleBoxcenter = LabelController.addLabel("Drow Rectangle", FontController.getPrimaryFont(1, 28), 50, 600,400, 50);
+        JLabel titleBoxright = LabelController.addLabel("Text Rectangle", FontController.getPrimaryFont(1, 28), 450, 600,400, 50);
         JPanel addTreeFormat=PanelsController.roundedBorder(60);
         JPanel addRectangleFormat=PanelsController.roundedBorder(60);
         JPanel addTextFormat=PanelsController.roundedBorder(60);
@@ -35,28 +36,37 @@ public class RectangleComplete extends JPanel{
 
         addTreeFormat.setName("addTreeFormat");
         addTreeFormat.setOpaque(false);
-        addTreeFormat.setBackground(Color.decode("#EEEEEE"));
+        addTreeFormat.setBackground(Color.decode("#E7E7E7"));
         addTreeFormat.setLayout(new BorderLayout());
-        addTreeFormat.setBounds(100, 150, 300, 400);
-        addTreeFormat.add(ImageController.addPhoto("treeRectandle.png",200,200),BorderLayout.CENTER);
+        addTreeFormat.setBounds(890, 150, 300, 400);
+        iconExit=ImageController.addPhoto("treeRectandle.png",200,200);
+        addTreeFormat.add(iconExit,BorderLayout.CENTER);
+        
         PanelsController.addActionPanel(addTreeFormat, "addTreeFormat");
 
         addRectangleFormat.setName("addRectangleFormat");
         addRectangleFormat.setOpaque(false);
-        addRectangleFormat.setBackground(Color.decode("#EEEEEE"));
+        addRectangleFormat.setBackground(Color.decode("#E7E7E7"));
         addRectangleFormat.setLayout(new BorderLayout());
-        addRectangleFormat.setBounds(500, 150, 300, 400);
+        addRectangleFormat.setBounds(90, 150, 300, 400);
         addRectangleFormat.add(ImageController.addPhoto("rectangel.png",280,280),BorderLayout.CENTER);
         PanelsController.addActionPanel(addRectangleFormat, "addRectangleFormat");
 
         addTextFormat.setName("addTextFormat");
         addTextFormat.setOpaque(false);
-        addTextFormat.setBackground(Color.decode("#EEEEEE"));
+        addTextFormat.setBackground(Color.decode("#E7E7E7"));
         addTextFormat.setLayout(new BorderLayout());
-        addTextFormat.setBounds(900, 150, 300, 400);
+        addTextFormat.setBounds(490, 150, 300, 400);
         addTextFormat.add(ImageController.addPhoto("textRectangle.png",280,280),BorderLayout.CENTER);
         PanelsController.addActionPanel(addTextFormat, "addTextFormat");
         
+        JPanel backP=new JPanel();
+        backP.setBounds(1000, 50, 60, 60);
+        backP.setLayout(new BorderLayout());
+        backP.setOpaque(false);
+        PanelsController.addActionPanel(backP,"back");
+        backP.add(ImageController.addPhoto("back.png", 60, 60),BorderLayout.CENTER);
+        add(backP);
         add(addTreeFormat);
         add(addRectangleFormat);
         add(addTextFormat);

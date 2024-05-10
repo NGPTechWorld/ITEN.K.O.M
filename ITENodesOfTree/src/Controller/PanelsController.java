@@ -12,15 +12,18 @@ import java.awt.event.MouseListener;
 
 import Module.MainPanels;
 import Module.RoundedPanel;
+import View.RectangleComplete;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
         return new RoundedPanel(n);
     }
-    public static void switchPanels(String name) {
+    public static String backPanel="";
+    public static void switchPanels(String name,String now) {
         for (JPanel p : MainPanels.Panels) {
             if (p.getName().equals(name)) {
                 p.setVisible(true);
+                backPanel=now;
             } else {
                 p.setVisible(false);
             }
@@ -32,7 +35,14 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     case "RectangelComplete":
-                        switchPanels("RectangleComplete");
+                        switchPanels("RectangleComplete","Home");
+                    break;
+                    case "Exit":
+                        System.exit(0);
+                    break;
+                    case "back":
+                        switchPanels(backPanel,"");
+                        System.out.println(backPanel);
                     break;
                     default:
                         //switchPanels(action);
@@ -52,12 +62,21 @@ public class PanelsController {
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                panel.setBackground(ColorController.getWhiteColor());
+                if(action=="Exit"){
+                    
+                }else{
+                    panel.setBackground(ColorController.getWhiteColor());
+                }
+                
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                panel.setBackground(Color.decode("#EEEEEE"));
+                if(action=="Exit"){
+
+                }else{
+                    panel.setBackground(Color.decode("#E7E7E7"));
+                }
             }
         };
         panel.addMouseListener(ms);

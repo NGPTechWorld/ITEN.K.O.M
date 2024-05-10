@@ -32,10 +32,17 @@ public class HomePage extends JFrame {
         // ------------------------------------ 
         JPanel HomePanel=new JPanel();
         JLabel titleApp = LabelController.addLabel("ITE Nodes Of Tree", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
-        JLabel titleBoxleft = LabelController.addLabel("Add Complete Rectangle", FontController.getPrimaryFont(1, 28), 160, 625,400, 50);
+        JLabel titleBoxleft = LabelController.addLabel("Add Rectangle Complete", FontController.getPrimaryFont(1, 28), 160, 625,400, 50);
         JLabel titleBoxright = LabelController.addLabel("Add List Rectangles", FontController.getPrimaryFont(1, 28), 750, 625,400, 50);
         JPanel addRectangelFill=PanelsController.roundedBorder(60);
         JPanel addRectangeNodes=PanelsController.roundedBorder(60);
+
+        JPanel exitP=new JPanel();
+        exitP.setBounds(1220, 0, 60, 60);
+        exitP.setLayout(new BorderLayout());
+        exitP.setOpaque(false);
+        PanelsController.addActionPanel(exitP,"Exit");
+        exitP.add(ImageController.addPhoto("exit.png", 60, 60),BorderLayout.CENTER);
 
         titleApp.setForeground(ColorController.getWhiteColor());
         titleBoxleft.setForeground(ColorController.getWhiteColor());
@@ -49,7 +56,7 @@ public class HomePage extends JFrame {
 
         addRectangelFill.setName("addRectangelFill");
         addRectangelFill.setOpaque(false);
-        addRectangelFill.setBackground(Color.decode("#EEEEEE"));
+        addRectangelFill.setBackground(Color.decode("#E7E7E7"));
         addRectangelFill.setLayout(new BorderLayout());
         addRectangelFill.setBounds(200, 150, 300, 450);
         addRectangelFill.add(ImageController.addPhoto("addtreefill.png",270,405),BorderLayout.CENTER);
@@ -59,7 +66,7 @@ public class HomePage extends JFrame {
 
         addRectangeNodes.setName("addRectangelFill");
         addRectangeNodes.setOpaque(false);
-        addRectangeNodes.setBackground(Color.decode("#EEEEEE"));
+        addRectangeNodes.setBackground(Color.decode("#E7E7E7"));
         addRectangeNodes.setLayout(new BorderLayout());
         addRectangeNodes.setBounds(800, 150, 300, 450);
         addRectangeNodes.add(ImageController.addPhoto("addnodes.png",294,441),BorderLayout.CENTER);
@@ -71,6 +78,7 @@ public class HomePage extends JFrame {
         JPanel RectangelCompleteP=new RectangleComplete();
         backgroundPanel.add(RectangelCompleteP);
         backgroundPanel.add(HomePanel);
+        backgroundPanel.add(exitP);
         MainPanels.addPanel(HomePanel);
         MainPanels.addPanel(RectangelCompleteP);
         RectangelCompleteP.setVisible(false);

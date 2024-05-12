@@ -11,15 +11,15 @@ public class ITENodsOfTree {
     }
     public static void main(String[] args) {
         // String s="";
-        // TextFormatController.Import("(( ( A[1,1] | ( B[1,1] | C[1,1] ) ) - ( D[3,1] - E[3,100] ) ) | F[2,102])");
+        // TextFormatController.Import("(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))\r");
         // //System.out.println(TextFormatController.root.value);
         // dfs(TextFormatController.root);
         // RectangleFormatController.Export(TextFormatController.root);
         // System.out.println();
         // RectangleFormatController.print();
         // RectangleFormatController.fillTextFile();
-        //RectangleFormatController.Export(TextFormatController.root);
-        //System.out.println(TextFormatController.export(TextFormatController.root));
+        // RectangleFormatController.Export(TextFormatController.root);
+        // System.out.println(TextFormatController.export(TextFormatController.root));
         new HomePage();
         // Node root=new Node("-",70,60);
         // root.leftChild=new Node("|",70,10);

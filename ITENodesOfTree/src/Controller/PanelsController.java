@@ -18,12 +18,12 @@ public class PanelsController {
     public static JPanel roundedBorder(int n) {
         return new RoundedPanel(n);
     }
-    public static String backPanel="";
-    public static void switchPanels(String name,String now) {
+    public static String backPanel="",preBackPanel="";
+    public static void switchPanels(String name,String now,String old) {
         for (JPanel p : MainPanels.Panels) {
             if (p.getName().equals(name)) {
                 p.setVisible(true);
-                backPanel=now;
+                    backPanel=now;
             } else {
                 p.setVisible(false);
             }
@@ -35,13 +35,17 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     case "RectangelComplete":
-                        switchPanels("RectangleComplete","Home");
+                        switchPanels("RectangleComplete","Home","");
                     break;
                     case "Exit":
                         System.exit(0);
                     break;
+                    case"addTextFormat":
+                        switchPanels("TextFormatInput", "RectangleComplete","Home");
+                    break;
+
                     case "back":
-                        switchPanels(backPanel,"");
+                        switchPanels(backPanel,"Home",preBackPanel);
                         System.out.println(backPanel);
                     break;
                     default:

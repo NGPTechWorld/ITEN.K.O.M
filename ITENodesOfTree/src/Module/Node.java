@@ -44,4 +44,11 @@ public class Node {
     public void setRightChild(Node rightChild) {
         this.rightChild = rightChild;
     }
+    public static void dfs(Node node) {
+        if (node == null)
+            return;
+        System.out.print(node.value + " ");
+        dfs(node.leftChild);
+        dfs(node.rightChild);
+    }
 }

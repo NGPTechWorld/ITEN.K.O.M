@@ -1,10 +1,27 @@
 package Controller;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
+import java.io.File;
 
 public class ImageController {
     static String imagesPath = "resources\\images\\";
+    public static void playSound(String filePath) {
+        try {
+            File soundFile = new File(filePath);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            //clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static ImageIcon getITEBestIcon(int width,int height){
         String imagePath = imagesPath + "ITEBestIcon.png";
         ImageIcon imageIcon = new ImageIcon(imagePath);

@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 import Module.Node;
 
@@ -15,13 +18,13 @@ public class RectangleFormatController {
 
     public static String[] rectangle;
     public static char[][] rec;
-    public static Node root;
+    //
     static int sizeW=1,sizeH=1;
 
     //----------Import----------------------
-    public static void Import(String[] c,Node root){
+    public static void Import(String[] c){
         rectangle = c;
-        root = build(0,0,c.length - 1 , c[0].length() - 1);
+        DataBase.rootRectangle = build(0,0,c.length - 1 , c[0].length() - 1);
     }
     static Node build(int x1,int y1,int x2,int y2){
         Node node = new Node();
@@ -72,19 +75,32 @@ public class RectangleFormatController {
         return node;
     }
 
+    public static String[] readFileToStringArray() {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(DataBase.inputFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines.toArray(new String[0]);
+    }
     //----------Export----------------------
 
     public static void Export(Node node){
-        root=node;
-        rec = new char[root.height + 2][root.width + 2];
-        for(int i=0;i<=root.height+1;i++)
-            for(int j=0;j<=root.width+1;j++)
+        DataBase.rootRectangle=node;
+        rec = new char[DataBase.rootRectangle.height + 2][DataBase.rootRectangle.width + 2];
+        for(int i=0;i<=DataBase.rootRectangle.height+1;i++)
+            for(int j=0;j<=DataBase.rootRectangle.width+1;j++)
                 rec[i][j]=' ';
-        for(int i=0;i<= root.height+1;i++)
-            rec[i][0] = rec[i][root.width+1] = '|';
-        for (int i=1; i<= root.width;i++)
-            rec[0][i] = rec[root.height+1][i] = '-';
-        buildRec(1,1,root);
+        for(int i=0;i<= DataBase.rootRectangle.height+1;i++)
+            rec[i][0] = rec[i][DataBase.rootRectangle.width+1] = '|';
+        for (int i=1; i<= DataBase.rootRectangle.width;i++)
+            rec[0][i] = rec[DataBase.rootRectangle.height+1][i] = '-';
+        buildRec(1,1,DataBase.rootRectangle);
         fillTextFile();
         System.out.println("Export Rectangle Done!");
     }
@@ -115,9 +131,9 @@ public class RectangleFormatController {
         }
     }
     public static void print(){
-        for(int i=0;i<=root.height+1;i++)
+        for(int i=0;i<=DataBase.rootRectangle.height+1;i++)
             {
-        for(int j=0;j<= root.width+1;j++)
+        for(int j=0;j<= DataBase.rootRectangle.width+1;j++)
             System.out.print(rec[i][j]);
             System.out.println();
         }

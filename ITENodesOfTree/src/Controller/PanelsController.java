@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,8 +13,10 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import Module.MainPanels;
+import Module.Node;
 import Module.RoundedPanel;
 import View.RectangleComplete;
+import View.RectangleFormatInput;
 import View.TextFormatInput;
 
 public class PanelsController {
@@ -55,6 +58,9 @@ public class PanelsController {
                     break;
                     case"addTextFormat":
                         switchPanels("TextFormatInput", "RectangleComplete","Home");
+                    break;
+                    case"addRectangleFormat":
+                        switchPanels("RectangleFormatInput", "RectangleComplete", "Home");
                     break;
                     case "EportRectangleFormat":
                         if(nowPanel=="TextFormatInput"){
@@ -115,11 +121,39 @@ public class PanelsController {
                             TextFormatInput.stateCheck.setText("Done!");
                             TextFormatInput.stateCheck.setVisible(true);
                             TextFormatInput.outputUI.setVisible(true);
+                            ImageController.playSound("resources\\images\\ngp.wav");
                         } catch (Exception i) {
                             TextFormatInput.stateCheck.setText("Error input!!");
                             TextFormatInput.outputUI.setVisible(false);
                             TextFormatInput.stateCheck.setVisible(true);
                         }
+                    break;
+                    case "OpenFile":
+                        Desktop desktop = Desktop.getDesktop();
+                        try {
+                            desktop.edit(DataBase.inputFile);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    break;
+                    case "CheckFile":
+                        try {
+                            //RectangleFormatController.Import(RectangleFormatController.readFileToArray(), DataBase.rootRectangle);
+                            String[] s=RectangleFormatController.readFileToStringArray();
+                            RectangleFormatController.Import(s);
+                            Node.dfs(DataBase.rootRectangle);
+                            RectangleFormatInput.stateCheck.setText("Done!");
+                            RectangleFormatInput.inpuTextField.setText(TextFormatController.export(DataBase.rootRectangle));
+                            // RectangleFormatInput.inpuTextField.setText();
+                            RectangleFormatInput.stateCheck.setVisible(true);
+                            RectangleFormatInput.outputUI.setVisible(true);
+                        } catch (Exception i) {
+                            RectangleFormatInput.stateCheck.setText("Error input!!");
+                            RectangleFormatInput.outputUI.setVisible(false);
+                            RectangleFormatInput.stateCheck.setVisible(true);
+                        }
+                        
+                        
                     break;
                     case "Clear":
                         TextFormatInput.inpuTextField.setText("");
@@ -134,9 +168,8 @@ public class PanelsController {
                     break;
                     case "EportRectangleFormat":
                         if(nowPanel=="TextFormatInput"){
-                           
                             //System.out.println("Done");
-                            RectangleFormatController.Export(TextFormatController.root);
+                            RectangleFormatController.Export(DataBase.rootRectangle);
                         }
                     break;
                     default:

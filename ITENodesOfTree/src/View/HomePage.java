@@ -77,15 +77,19 @@ public class HomePage extends JFrame {
         
         JPanel rectangelCompleteP=new RectangleComplete();
         JPanel textFormatInput=new TextFormatInput();
+        JPanel rectangleFormatInput=new RectangleFormatInput();
         backgroundPanel.add(rectangelCompleteP);
         backgroundPanel.add(textFormatInput);
+        backgroundPanel.add(rectangleFormatInput);
         backgroundPanel.add(HomePanel);
         backgroundPanel.add(exitP);
         MainPanels.addPanel(HomePanel);
-        MainPanels.addPanel(rectangelCompleteP);
+        MainPanels.addPanel(rectangleFormatInput);
         MainPanels.addPanel(textFormatInput);
+        MainPanels.addPanel(rectangelCompleteP);
         rectangelCompleteP.setVisible(false);
         textFormatInput.setVisible(false);
+        rectangleFormatInput.setVisible(false);
         add(backgroundPanel);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         setVisible(true);

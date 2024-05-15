@@ -1,7 +1,6 @@
 package Controller;
 
 import Module.Node;
-import Module.TreeRectangel;
 
 public class TextFormatController {
     //---Export---
@@ -17,36 +16,34 @@ public class TextFormatController {
     }
     //---Import---
     private static int[] sum;
-    public static String tree;
-    public static Node root;
     final static int INF = 10000;
 
     public static void Import(String s) {
-        tree = s;
-        sum = new int[tree.length()];
-        for (int i = 0; i < tree.length(); i++) {
-            if (tree.charAt(i) == '(')
+        DataBase.TextRectangle = s;
+        sum = new int[DataBase.TextRectangle.length()];
+        for (int i = 0; i < DataBase.TextRectangle.length(); i++) {
+            if (DataBase.TextRectangle.charAt(i) == '(')
                 sum[i]++;
-            else if (tree.charAt(i) == ')')
+            else if (DataBase.TextRectangle.charAt(i) == ')')
                 sum[i]--;
             if (i != 0)
                 sum[i] += sum[i - 1];
         }
-        for (int i = 0; i < tree.length(); i++) {
-            if (Invalid(tree.charAt(i)))
+        for (int i = 0; i < DataBase.TextRectangle.length(); i++) {
+            if (Invalid(DataBase.TextRectangle.charAt(i)))
                 sum[i] = INF;
         }
-        root = build(0, tree.length() - 1);
+        DataBase.rootRectangle = build(0, DataBase.TextRectangle.length() - 1);
         System.out.println("Import Text Done!");
     }
 
     private static int Min(int left, int right) {
         int index = -1;
         for (int i = left; i <= right; i++) {
-            if ((tree.charAt(i) == '|' || tree.charAt(i) == '–' || tree.charAt(i) == '-') && index == -1) {
+            if ((DataBase.TextRectangle.charAt(i) == '|' || DataBase.TextRectangle.charAt(i) == '–' || DataBase.TextRectangle.charAt(i) == '-') && index == -1) {
                 index = i;
             }
-            if ((tree.charAt(i) == '|' || tree.charAt(i) == '–' || tree.charAt(i) == '-') && sum[index] > sum[i]) {
+            if ((DataBase.TextRectangle.charAt(i) == '|' || DataBase.TextRectangle.charAt(i) == '–' || DataBase.TextRectangle.charAt(i) == '-') && sum[index] > sum[i]) {
                 index = i;
             }
         }
@@ -63,26 +60,26 @@ public class TextFormatController {
     private static Node build(int left, int right) {
         int Index = Min(left, right);
         Node node = new Node();
-        if (tree.charAt(Index) != '|' && tree.charAt(Index) != '–' && tree.charAt(Index) != '-') {
+        if (DataBase.TextRectangle.charAt(Index) != '|' && DataBase.TextRectangle.charAt(Index) != '–' && DataBase.TextRectangle.charAt(Index) != '-') {
             int height = 0;
             int width = 0;
             node.value = "";
-            for (; tree.charAt(Index) != '['; Index++)
-                node.value += tree.charAt(Index);
+            for (; DataBase.TextRectangle.charAt(Index) != '['; Index++)
+                node.value += DataBase.TextRectangle.charAt(Index);
             Index++;
-            for (; tree.charAt(Index) != ','; Index++)
-                width = width * 10 + tree.charAt(Index) - '0';
+            for (; DataBase.TextRectangle.charAt(Index) != ','; Index++)
+                width = width * 10 + DataBase.TextRectangle.charAt(Index) - '0';
             Index++;
-            for (; tree.charAt(Index) != ']'; Index++)
-                height = height * 10 + tree.charAt(Index) - '0';
+            for (; DataBase.TextRectangle.charAt(Index) != ']'; Index++)
+                height = height * 10 + DataBase.TextRectangle.charAt(Index) - '0';
             node.width = width;
             node.height = height;
             return node;
         }
-        node.value = String.valueOf(tree.charAt(Index));
+        node.value = String.valueOf(DataBase.TextRectangle.charAt(Index));
         node.leftChild = build(left, Index - 1);
         node.rightChild = build(Index + 1, right);
-        if (tree.charAt(Index) == '|') {
+        if (DataBase.TextRectangle.charAt(Index) == '|') {
             node.width = node.leftChild.width + node.rightChild.width;
             node.height = node.rightChild.height;
         } else {

@@ -30,7 +30,8 @@ public class TextFormatInput extends JPanel{
         setLayout(null);
         setOpaque(false);
         JLabel titlePage = LabelController.addLabel("Add Text Rectangle", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
-        
+        JLabel inputlabel = LabelController.addLabel("Input", FontController.getPrimaryFont(1, 36), 0, 90,200, 50);
+        inputlabel.setForeground(ColorController.getWhiteColor());
         titlePage.setForeground(ColorController.getWhiteColor());
         
         JPanel backP=new JPanel();
@@ -40,7 +41,8 @@ public class TextFormatInput extends JPanel{
         PanelsController.addActionPanel(backP,"back");
         backP.add(ImageController.addPhoto("back.png", 60, 60),BorderLayout.CENTER);
         add(backP);
-       
+        
+
         JPanel textPanel=PanelsController.roundedBorder(30);
         textPanel.setOpaque(false);
         textPanel.setBounds(50,150,1180,80);
@@ -65,12 +67,16 @@ public class TextFormatInput extends JPanel{
                 }
             }
         });
-
+        JLabel errorJLabel = LabelController.addLabel("Error input!!", FontController.getPrimaryFont(1, 20), 20, 225,200, 50);
+        errorJLabel.setForeground(ColorController.secoundColorlight2());
         //scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         // inpuTextField.setLineWrap(true);
         // inpuTextField.setWrapStyleWord(false); 
         textPanel.add(scrollPane);
+        add(inputlabel);
+        add(new OutputUI());
         add(textPanel);
+        add(errorJLabel);
         add(titlePage);
 }
 }

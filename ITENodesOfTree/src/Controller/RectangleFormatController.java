@@ -1,13 +1,18 @@
 package Controller;
 
 
+import java.awt.Desktop;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import Module.Node;
 
 public class RectangleFormatController {
+
     public static String[] rectangle;
     public static char[][] rec;
     public static Node root;
@@ -66,7 +71,9 @@ public class RectangleFormatController {
         node.width = (y2 - y1 - 1);
         return node;
     }
+
     //----------Export----------------------
+
     public static void Export(Node node){
         root=node;
         rec = new char[root.height + 2][root.width + 2];
@@ -78,6 +85,8 @@ public class RectangleFormatController {
         for (int i=1; i<= root.width;i++)
             rec[0][i] = rec[root.height+1][i] = '-';
         buildRec(1,1,root);
+        fillTextFile();
+        System.out.println("Export Rectangle Done!");
     }
     
     static void buildRec(int x,int y,Node node){
@@ -99,7 +108,7 @@ public class RectangleFormatController {
         }
         else{
             for(int i=y;i<y+node.width;i++)
-            rec[x+node.leftChild.height][i]='-';
+                rec[x+node.leftChild.height][i]='-';
             //print();
             buildRec(x,y,node.leftChild);
             buildRec(x+node.leftChild.height+1,y,node.rightChild);
@@ -116,19 +125,19 @@ public class RectangleFormatController {
     static boolean Invalid(char x) {
         return (x == '(' || x == ')' || x == '[' || x == ']' || (x >= '0' && x <= '9') || x == ',' || x == ' ');
     }
+
     public static void fillTextFile(){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-
-            // Write each character array to the file
+            FileWriter fileOutput=new FileWriter("output.txt");
+            BufferedWriter writer = new BufferedWriter(fileOutput);
             for (char[] row : rec) {
                 for (char ch : row) {
                     writer.write(ch);
                 }
-                writer.newLine(); // Write a new line after each row
+                writer.newLine();
             }
-
-            // Close the writer
+            Desktop desktop = Desktop.getDesktop();
+            desktop.edit(new File("output.txt"));
             writer.close();
             System.out.println("Successfully wrote the character array to the file.");
         } catch (IOException e) {

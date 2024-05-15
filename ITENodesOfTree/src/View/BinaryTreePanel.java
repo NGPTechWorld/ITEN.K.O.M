@@ -8,9 +8,9 @@ import Module.Node;
 import Module.TreeRectangel;
 
 class BinaryTreePanel extends JPanel {
-    TreeRectangel treeRec;
+    Node treeRec;
 
-    public BinaryTreePanel(TreeRectangel treeRec) {
+    public BinaryTreePanel(Node treeRec) {
         this.treeRec = treeRec;
         // System.out.println(treeRec.getRoot().getValue());
         setSize(1000, 720);
@@ -20,7 +20,7 @@ class BinaryTreePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawTree(g, getWidth() / 2, 30, treeRec.getRoot(), getWidth() / 4);
+        drawTree(g, getWidth() / 2, 30, treeRec, getWidth() / 4);
     }
 
     private void drawTree(Graphics g, int x, int y, Node node, int xOffset) {

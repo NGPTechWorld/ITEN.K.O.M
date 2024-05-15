@@ -9,16 +9,10 @@ import Module.Node;
 import Module.TreeRectangel;
 
 public class addNodeTree extends JFrame {
-    TreeRectangel treeRec;
+    Node treeRec;
 
-    addNodeTree() {
-        treeRec = new TreeRectangel();
-        treeRec.root = new Node("--");
-        treeRec.root.leftChild = new Node("|");
-        treeRec.root.leftChild.rightChild = new Node("B", 20, 30);
-        treeRec.root.leftChild.leftChild = new Node("A", 30, 40);
-        treeRec.root.rightChild = new Node("C", 50, 20);
-        System.out.println(TextFormatController.export(treeRec.getRoot()));
+    public addNodeTree(Node root) {
+        treeRec=root;
         initComponents();
     }
 
@@ -107,7 +101,4 @@ public class addNodeTree extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new addNodeTree();
-    }
 }

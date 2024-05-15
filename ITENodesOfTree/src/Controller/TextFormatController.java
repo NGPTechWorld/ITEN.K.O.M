@@ -17,7 +17,7 @@ public class TextFormatController {
     }
     //---Import---
     private static int[] sum;
-    private static String tree;
+    public static String tree;
     public static Node root;
     final static int INF = 10000;
 
@@ -37,6 +37,7 @@ public class TextFormatController {
                 sum[i] = INF;
         }
         root = build(0, tree.length() - 1);
+        System.out.println("Import Text Done!");
     }
 
     private static int Min(int left, int right) {

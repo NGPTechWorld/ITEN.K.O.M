@@ -19,12 +19,14 @@ import Module.CustomScrollBarUI;
 import Module.RoundedPanel;
 
 public class TextFormatInput extends JPanel{
-    public static JLabel iconExit;
+    public static JLabel iconExit,stateCheck;
+    public static OutputUI outputUI;
     public static JTextPane inpuTextField;
     public TextFormatInput(){
         initComponents();
     }
     private void initComponents(){
+        outputUI=new OutputUI();
         setName("TextFormatInput");
         setBounds(0, 10, 1280, 700);
         setLayout(null);
@@ -67,16 +69,24 @@ public class TextFormatInput extends JPanel{
                 }
             }
         });
-        JLabel errorJLabel = LabelController.addLabel("Error input!!", FontController.getPrimaryFont(1, 20), 20, 225,200, 50);
-        errorJLabel.setForeground(ColorController.secoundColorlight2());
+        JPanel btnCheck=PanelsController.addBtnPanle(300, 300, "Check", ColorController.firstColor());
+        PanelsController.addActionOutput(btnCheck, "CheckText");
+        JPanel btnRset=PanelsController.addBtnPanle(600, 300, "Clear", ColorController.secoundColor());
+        PanelsController.addActionOutput(btnRset, "Clear");
+        stateCheck = LabelController.addLabel("", FontController.getPrimaryFont(1, 20), 20, 225,200, 50);
+        stateCheck.setForeground(ColorController.secoundColorlight2());
         //scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         // inpuTextField.setLineWrap(true);
         // inpuTextField.setWrapStyleWord(false); 
         textPanel.add(scrollPane);
         add(inputlabel);
-        add(new OutputUI());
+        add(outputUI);
+        add(btnRset);
+        add(btnCheck);
         add(textPanel);
-        add(errorJLabel);
+        add(stateCheck);
         add(titlePage);
+        outputUI.setVisible(false);
+        stateCheck.setVisible(false);
 }
 }

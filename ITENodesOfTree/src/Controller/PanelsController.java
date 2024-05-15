@@ -1,14 +1,15 @@
 package Controller;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-
+import java.io.IOException;
 
 import Module.MainPanels;
 import Module.RoundedPanel;
@@ -18,6 +19,16 @@ import View.TextFormatInput;
 public class PanelsController {
     public static JPanel roundedBorder(int n) {
         return new RoundedPanel(n);
+    }
+    public static JPanel addBtnPanle(int x,int y,String name,Color color){
+        JPanel btn=PanelsController.roundedBorder(40);
+        btn.setBounds(x, y, 200, 50);
+        btn.setOpaque(false);
+        JLabel titlebtn = LabelController.addLabel(name, FontController.getPrimaryFont(1, 20), 0, 0,200, 50);
+        titlebtn.setForeground(color);
+        btn.setLayout(new BorderLayout());
+        btn.add(titlebtn,BorderLayout.CENTER);
+        return btn;
     }
     public static String backPanel="",preBackPanel="",nowPanel="Home";
     public static void switchPanels(String name,String now,String old) {
@@ -98,9 +109,32 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println(nowPanel);
                 switch (action) {
+                    case "CheckText":
+                        try {
+                            TextFormatController.Import(TextFormatInput.inpuTextField.getText());
+                            TextFormatInput.stateCheck.setText("Done!");
+                            TextFormatInput.stateCheck.setVisible(true);
+                            TextFormatInput.outputUI.setVisible(true);
+                        } catch (Exception i) {
+                            TextFormatInput.stateCheck.setText("Error input!!");
+                            TextFormatInput.outputUI.setVisible(false);
+                            TextFormatInput.stateCheck.setVisible(true);
+                        }
+                    break;
+                    case "Clear":
+                        TextFormatInput.inpuTextField.setText("");
+                        TextFormatInput.outputUI.setVisible(false);
+                        TextFormatInput.stateCheck.setVisible(false);
+                        try {
+                            DataBase.resetDataBase();
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                    break;
                     case "EportRectangleFormat":
                         if(nowPanel=="TextFormatInput"){
-                            TextFormatController.Import(TextFormatInput.inpuTextField.getText());
+                           
                             //System.out.println("Done");
                             RectangleFormatController.Export(TextFormatController.root);
                         }

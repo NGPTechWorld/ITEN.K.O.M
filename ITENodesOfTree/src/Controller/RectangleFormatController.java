@@ -128,7 +128,7 @@ public class RectangleFormatController {
 
     public static void fillTextFile(){
         try {
-            FileWriter fileOutput=new FileWriter("output.txt");
+            FileWriter fileOutput=new FileWriter(DataBase.outputFile);
             BufferedWriter writer = new BufferedWriter(fileOutput);
             for (char[] row : rec) {
                 for (char ch : row) {
@@ -137,7 +137,7 @@ public class RectangleFormatController {
                 writer.newLine();
             }
             Desktop desktop = Desktop.getDesktop();
-            desktop.edit(new File("output.txt"));
+            desktop.edit(DataBase.outputFile);
             writer.close();
             System.out.println("Successfully wrote the character array to the file.");
         } catch (IOException e) {

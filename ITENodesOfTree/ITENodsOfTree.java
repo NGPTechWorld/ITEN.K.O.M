@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import Controller.*;
 import Module.Node;
 import View.*;
@@ -9,7 +11,7 @@ public class ITENodsOfTree {
         dfs(node.leftChild);
         dfs(node.rightChild);
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // String s="";
         // TextFormatController.Import("(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))\r");
         // //System.out.println(TextFormatController.root.value);
@@ -20,6 +22,7 @@ public class ITENodsOfTree {
         // RectangleFormatController.fillTextFile();
         // RectangleFormatController.Export(TextFormatController.root);
         // System.out.println(TextFormatController.export(TextFormatController.root));
+        new DataBase();
         new HomePage();
         //new addNodeTree(TextFormatController.root);
         // Node root=new Node("-",70,60);

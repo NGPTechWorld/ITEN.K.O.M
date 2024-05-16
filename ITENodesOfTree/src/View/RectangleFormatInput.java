@@ -22,6 +22,7 @@ public class RectangleFormatInput extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static OutputUI outputUI;
     public static JTextPane inpuTextField;
+    public static JPanel textPanel;
     public RectangleFormatInput(){
         initComponents();
     }
@@ -45,7 +46,7 @@ public class RectangleFormatInput extends JPanel{
         add(backP);
         
 
-        JPanel textPanel=PanelsController.roundedBorder(30);
+        textPanel=PanelsController.roundedBorder(30);
         textPanel.setOpaque(false);
         textPanel.setBounds(50,350,1180,80);
         textPanel.setLayout(null);
@@ -54,7 +55,8 @@ public class RectangleFormatInput extends JPanel{
         inpuTextField.setBorder(null);
         //inpuTextField.setHorizontalAlignment(JTextField.CENTER);
         inpuTextField.setFont(FontController.getPrimaryFont(0, 30));
-        inpuTextField.setEnabled(false);
+        //inpuTextField.setEnabled(false);
+        //PanelsController.disableKeyboardInput(inpuTextField);
         inpuTextField.setDisabledTextColor(ColorController.getBlackColor());
         JScrollPane scrollPane = new JScrollPane(inpuTextField);
         JScrollBar scrollBar = scrollPane.getHorizontalScrollBar();
@@ -92,6 +94,7 @@ public class RectangleFormatInput extends JPanel{
         add(stateCheck);
         add(titlePage);
         outputUI.setVisible(false);
+        textPanel.setVisible(false);
         stateCheck.setVisible(false);
 }
 }

@@ -4,15 +4,12 @@ import Module.Node;
 
 public class TextFormatController {
     //---Export---
-    static public String export(Node node){
-        if(node == null)
-            return "";
-        String string=node.getValue();
-        if (!(string =="|" ||string =="-" )){
-            string=node.getValue()+"["+node.width+","+node.height+"]";
+    static public  String export(Node node)
+    {
+        if(!node.value.equals("-") && !node.value.equals("|") && !node.value.equals("–")){
+            return node.value + "[" + node.width + "," + node.height + "]";
         }
-        return "("+export(node.getLeftChild())+string+export(node.getRightChild())+")";
-        
+        return "(" + export(node.leftChild) + node.value + export(node.rightChild) + ")";
     }
     //---Import---
     private static int[] sum;

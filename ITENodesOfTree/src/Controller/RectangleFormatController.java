@@ -80,7 +80,7 @@ public class RectangleFormatController {
         try (BufferedReader reader = new BufferedReader(new FileReader(DataBase.inputFile))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 lines.add(line);
             }
         } catch (IOException e) {

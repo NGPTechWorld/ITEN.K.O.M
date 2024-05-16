@@ -6,6 +6,7 @@ import javax.swing.*;
 import Controller.*;
 import Module.MainPanels;
 public class HomePage extends JFrame {
+    public static JPanel rectangleFormatInput,rectangelCompleteP,textFormatInput;public static DrowTreeUI drowTree;
     public HomePage() {
         initComponents();
     }
@@ -74,19 +75,22 @@ public class HomePage extends JFrame {
         HomePanel.add(titleBoxright);
         HomePanel.add(addRectangeNodes);
         HomePanel.add(titleApp);
-        
-        JPanel rectangelCompleteP=new RectangleComplete();
-        JPanel textFormatInput=new TextFormatInput();
-        JPanel rectangleFormatInput=new RectangleFormatInput();
+        drowTree=new DrowTreeUI();
+         rectangelCompleteP=new RectangleComplete();
+         textFormatInput=new TextFormatInput();
+        rectangleFormatInput=new RectangleFormatInput();
         backgroundPanel.add(rectangelCompleteP);
         backgroundPanel.add(textFormatInput);
         backgroundPanel.add(rectangleFormatInput);
         backgroundPanel.add(HomePanel);
         backgroundPanel.add(exitP);
+        backgroundPanel.add(drowTree);
+        MainPanels.addPanel(drowTree);
         MainPanels.addPanel(HomePanel);
         MainPanels.addPanel(rectangleFormatInput);
         MainPanels.addPanel(textFormatInput);
         MainPanels.addPanel(rectangelCompleteP);
+        drowTree.setVisible(false);
         rectangelCompleteP.setVisible(false);
         textFormatInput.setVisible(false);
         rectangleFormatInput.setVisible(false);

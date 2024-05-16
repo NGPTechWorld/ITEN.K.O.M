@@ -2,6 +2,11 @@ package Controller;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,6 +20,8 @@ import java.io.IOException;
 import Module.MainPanels;
 import Module.Node;
 import Module.RoundedPanel;
+import View.DrowTreeUI;
+import View.HomePage;
 import View.RectangleComplete;
 import View.RectangleFormatInput;
 import View.TextFormatInput;
@@ -115,6 +122,10 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println(nowPanel);
                 switch (action) {
+                    case "addTreeFormat":
+                        HomePage.drowTree.bt.updateTree(DataBase.rootRectangle);
+                        switchPanels("DrowTreeUI", "TextFormatInput", "RectangelComplete");
+                    break;
                     case "CheckText":
                         try {
                             TextFormatController.Import(TextFormatInput.inpuTextField.getText());
@@ -147,6 +158,7 @@ public class PanelsController {
                             // RectangleFormatInput.inpuTextField.setText();
                             RectangleFormatInput.stateCheck.setVisible(true);
                             RectangleFormatInput.outputUI.setVisible(true);
+                            RectangleFormatInput.textPanel.setVisible(true);
                         } catch (Exception i) {
                             RectangleFormatInput.stateCheck.setText("Error input!!");
                             RectangleFormatInput.outputUI.setVisible(false);
@@ -159,6 +171,10 @@ public class PanelsController {
                         TextFormatInput.inpuTextField.setText("");
                         TextFormatInput.outputUI.setVisible(false);
                         TextFormatInput.stateCheck.setVisible(false);
+                        RectangleFormatInput.inpuTextField.setText("");
+                        RectangleFormatInput.textPanel.setVisible(false);
+                        RectangleFormatInput.outputUI.setVisible(false);
+                        RectangleFormatInput.stateCheck.setVisible(false);
                         try {
                             DataBase.resetDataBase();
                         } catch (IOException e1) {
@@ -210,4 +226,24 @@ public class PanelsController {
         panel.addMouseListener(ms);
 
     } 
+    public static void disableKeyboardInput(JTextPane textPane) {
+        ((AbstractDocument) textPane.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
+                    throws BadLocationException {
+            }
+
+            @Override
+            public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
+                
+            }
+
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+                    throws BadLocationException {
+                
+            }
+        });
+        textPane.setFocusable(false);
+    }
 }

@@ -43,7 +43,7 @@ public class OutputUI extends JPanel{
         iconExit=ImageController.addPhoto("treeRectandle.png",120,120);
         treeFormat.add(iconExit,BorderLayout.CENTER);
         
-        PanelsController.addActionPanel(treeFormat, "addTreeFormat");
+        PanelsController.addActionOutput(treeFormat, "addTreeFormat");
 
         rectangleFormat.setName("EportRectangleFormat");
         rectangleFormat.setOpaque(false);

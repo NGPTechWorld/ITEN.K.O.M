@@ -55,7 +55,7 @@ public class addNodeTree extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         // System.out.println(treeRec.getRoot().getValue());
-        BinaryTreePanel binaryTreePanel = new BinaryTreePanel(treeRec);
+        BinaryTreePanel binaryTreePanel = new BinaryTreePanel();
 
         panel.setBounds(0, 0, 1000, 720);
         JButton addButton = new JButton("Add Node");

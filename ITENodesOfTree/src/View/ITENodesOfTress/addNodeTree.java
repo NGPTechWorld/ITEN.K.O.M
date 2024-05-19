@@ -1,10 +1,10 @@
-package View;
+package View.ITENodesOfTress;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Controller.TextFormatController;
+import Controller.ITENodesOfTress.TextFormatController;
 import Module.Node;
 import Module.TreeRectangel;
 

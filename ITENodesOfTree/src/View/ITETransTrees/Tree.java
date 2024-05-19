@@ -1,7 +1,11 @@
+package View.ITETransTrees;
+
 import java.util.*;
 
+import Module.Node;
+
 public class Tree {
-    Node G_root, B_root;
+    NodeGeneric G_root, B_root;
     List<String> edges = new ArrayList<>();
     HashMap<String, String[]> frequency = new HashMap<>();
 
@@ -16,16 +20,16 @@ public class Tree {
         GetEdges(G_root);
     }
 
-    private void GetEdges(Node node) {
+    private void GetEdges(NodeGeneric node) {
         if (node.child.isEmpty())
             return;
         String edge = node.value;
         edge += " -> ";
-        for (Node n : node.child) {
+        for (NodeGeneric n : node.child) {
             edge += n.value + ",";
         }
         edges.add(edge.substring(0, edge.length() - 1));
-        for (Node n : node.child) {
+        for (NodeGeneric n : node.child) {
             GetEdges(n);
         }
     }
@@ -63,8 +67,8 @@ public class Tree {
         }
     }
 
-    private Node build(String name) {
-        Node node = new Node();
+    private NodeGeneric build(String name) {
+        NodeGeneric node = new NodeGeneric();
         node.value = name;
         if (frequency.containsKey(name)) {
             for (String s : frequency.get(name)) {
@@ -74,23 +78,23 @@ public class Tree {
         return node;
     }
 
-    void dfs(Node node, Node p) {
+    void dfs(NodeGeneric node, NodeGeneric p) {
         if (node == null)
             return;
         System.out.println(p.value + " -> " + node.value);
-        for (Node c : node.child) {
+        for (NodeGeneric c : node.child) {
             dfs(c, node);
         }
     }
 
-    void ImportGtoB(Node root) {
+    void ImportGtoB(NodeGeneric root) {
         B_root = transformGenericToBinary(root, root.child.size() - 1, null);
     }
 
-    private Node transformGenericToBinary(Node node, int index, Node parent) {
+    private NodeGeneric transformGenericToBinary(NodeGeneric node, int index, NodeGeneric parent) {
         if (node == null)
             return null;
-        Node new_node = new Node();
+            NodeGeneric new_node = new NodeGeneric();
         new_node.value = node.value;
         if (index == 0 || parent == null)
             new_node.child.add(transformGenericToBinary(null, 0, null));
@@ -107,26 +111,26 @@ public class Tree {
         return new_node;
     }
 
-    void ExportBtoG(Node root) {
+    void ExportBtoG(NodeGeneric root) {
         G_root = transformBinaryToGeneric(root);
     }
 
-    private Node transformBinaryToGeneric(Node node) {
+    private NodeGeneric transformBinaryToGeneric(NodeGeneric node) {
         if (node == null)
             return null;
-        Node new_node = new Node();
+            NodeGeneric new_node = new NodeGeneric();
         new_node.value = node.value;
         if (node.child.get(1) != null) {
-            List<Node> child = new ArrayList<>();
+            List<NodeGeneric> child = new ArrayList<>();
             getChildrenOfNode(node.child.get(1), child);
-            for (Node c : child) {
+            for (NodeGeneric c : child) {
                 new_node.child.add(transformBinaryToGeneric(c));
             }
         }
         return new_node;
     }
 
-    private void getChildrenOfNode(Node node, List<Node> parent) {
+    private void getChildrenOfNode(NodeGeneric node, List<NodeGeneric> parent) {
         if (node == null)
             return;
         getChildrenOfNode(node.child.get(0), parent);

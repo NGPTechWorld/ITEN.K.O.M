@@ -1,4 +1,4 @@
-package View;
+package View.ITENodesOfTress;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,21 +18,20 @@ import Controller.PanelsController;
 import Module.CustomScrollBarUI;
 import Module.RoundedPanel;
 
-public class RectangleFormatInput extends JPanel{
+public class TextFormatInput extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static OutputUI outputUI;
     public static JTextPane inpuTextField;
-    public static JPanel textPanel;
-    public RectangleFormatInput(){
+    public TextFormatInput(){
         initComponents();
     }
     private void initComponents(){
         outputUI=new OutputUI();
-        setName("RectangleFormatInput");
+        setName("TextFormatInput");
         setBounds(0, 10, 1280, 700);
         setLayout(null);
         setOpaque(false);
-        JLabel titlePage = LabelController.addLabel("Drow Rectangle", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
+        JLabel titlePage = LabelController.addLabel("Add Text Rectangle", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
         JLabel inputlabel = LabelController.addLabel("Input", FontController.getPrimaryFont(1, 36), 0, 90,200, 50);
         inputlabel.setForeground(ColorController.getWhiteColor());
         titlePage.setForeground(ColorController.getWhiteColor());
@@ -46,18 +45,15 @@ public class RectangleFormatInput extends JPanel{
         add(backP);
         
 
-        textPanel=PanelsController.roundedBorder(30);
+        JPanel textPanel=PanelsController.roundedBorder(30);
         textPanel.setOpaque(false);
-        textPanel.setBounds(50,350,1180,80);
+        textPanel.setBounds(50,150,1180,80);
         textPanel.setLayout(null);
         textPanel.setBackground(ColorController.getWhiteColor());
         inpuTextField=new JTextPane();
         inpuTextField.setBorder(null);
         //inpuTextField.setHorizontalAlignment(JTextField.CENTER);
         inpuTextField.setFont(FontController.getPrimaryFont(0, 30));
-        //inpuTextField.setEnabled(false);
-        //PanelsController.disableKeyboardInput(inpuTextField);
-        inpuTextField.setDisabledTextColor(ColorController.getBlackColor());
         JScrollPane scrollPane = new JScrollPane(inpuTextField);
         JScrollBar scrollBar = scrollPane.getHorizontalScrollBar();
         scrollBar.setUI(new CustomScrollBarUI());
@@ -73,13 +69,11 @@ public class RectangleFormatInput extends JPanel{
                 }
             }
         });
-        JPanel btnOpenfile=PanelsController.addBtnPanle(270, 200, "OpenFile", ColorController.firstColorDark());
-        PanelsController.addActionOutput(btnOpenfile, "OpenFile");
-        JPanel btnCheck=PanelsController.addBtnPanle(520, 200, "Check", ColorController.firstColor());
-        PanelsController.addActionOutput(btnCheck, "CheckFile");
-        JPanel btnRset=PanelsController.addBtnPanle(770, 200, "Clear", ColorController.secoundColor());
+        JPanel btnCheck=PanelsController.addBtnPanle(300, 300, "Check", ColorController.firstColor());
+        PanelsController.addActionOutput(btnCheck, "CheckText");
+        JPanel btnRset=PanelsController.addBtnPanle(600, 300, "Clear", ColorController.secoundColor());
         PanelsController.addActionOutput(btnRset, "Clear");
-        stateCheck = LabelController.addLabel("Error!", FontController.getPrimaryFont(1, 20), 20, 250,200, 50);
+        stateCheck = LabelController.addLabel("", FontController.getPrimaryFont(1, 20), 20, 225,200, 50);
         stateCheck.setForeground(ColorController.secoundColorlight2());
         //scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         // inpuTextField.setLineWrap(true);
@@ -88,13 +82,11 @@ public class RectangleFormatInput extends JPanel{
         add(inputlabel);
         add(outputUI);
         add(btnRset);
-        add(btnOpenfile);
         add(btnCheck);
         add(textPanel);
         add(stateCheck);
         add(titlePage);
         outputUI.setVisible(false);
-        textPanel.setVisible(false);
         stateCheck.setVisible(false);
 }
 }

@@ -8,6 +8,9 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
+import Controller.ITENodesOfTress.RectangleFormatController;
+import Controller.ITENodesOfTress.TextFormatController;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -20,11 +23,11 @@ import java.io.IOException;
 import Module.MainPanels;
 import Module.Node;
 import Module.RoundedPanel;
-import View.DrowTreeUI;
-import View.HomePage;
-import View.RectangleComplete;
-import View.RectangleFormatInput;
-import View.TextFormatInput;
+import View.ITENodesOfTress.DrowTreeUI;
+import View.ITENodesOfTress.HomePage;
+import View.ITENodesOfTress.RectangleComplete;
+import View.ITENodesOfTress.RectangleFormatInput;
+import View.ITENodesOfTress.TextFormatInput;
 
 public class PanelsController {
     public static JPanel roundedBorder(int n) {

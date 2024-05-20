@@ -78,7 +78,7 @@ public class BT {
         return node;
     }
 
-    public  void dfs(Node node) {
+    public void dfs(Node node) {
         if (node == null)
             return;
         System.out.print(node.value + " ");
@@ -126,11 +126,6 @@ public class BT {
     // AlZero *********************************
     // check merge two Nodes
     public boolean checkMergeTwoNodes(Node leftChild, Node rightChild) {
-        // Tree is empty
-        if (root == null) {
-            System.out.println("the tree is empty");
-            return false;
-        }
 
         // check leaf
         if (rightChild == null || leftChild == null) {
@@ -139,13 +134,16 @@ public class BT {
 
         // Check merge leftChild with rightChild
         if (leftChild.width == rightChild.width) {
-            System.out.println("you can merge " + leftChild.value + " and " + rightChild.value);
+            // System.out.println("you can merge " + leftChild.value + " and " +
+            // rightChild.value);
             return true;
         } else if (leftChild.height == rightChild.height) {
-            System.out.println("you can merge " + leftChild.value + " and " + rightChild.value);
+            // System.out.println("you can merge " + leftChild.value + " and " +
+            // rightChild.value);
             return true;
         } else {
-            System.out.println("you can't merge " + leftChild.value + " and " + rightChild.value);
+            // System.out.println("you can't merge " + leftChild.value + " and " +
+            // rightChild.value);
             return false;
         }
 

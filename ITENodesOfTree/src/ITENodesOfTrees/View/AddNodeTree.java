@@ -38,19 +38,19 @@ public class AddNodeTree extends JLabel {
         JLabel titlePage = LabelController.addLabel("Input", FontController.getPrimaryFont(1, 36), 0, 0,200, 50);
         titlePage.setForeground(ColorController.getWhiteColor());
         
-         titleName = LabelController.addLabel("Name Node:", FontController.getPrimaryFont(1, 24), 50, 80,200, 50);
+        titleName = LabelController.addLabel("Name Node:", FontController.getPrimaryFont(1, 24), 50, 80,200, 50);
         titleName.setForeground(ColorController.getWhiteColor());
         nameText=new JTextField();
         nameText.setBounds(250, 85, 200, 40);
         nameText.setFont(FontController.getPrimaryFont(0, 24));
         
-         titleWidth = LabelController.addLabel("Width Node:", FontController.getPrimaryFont(1, 24), 500, 30,200, 50);
+        titleWidth = LabelController.addLabel("Width Node:", FontController.getPrimaryFont(1, 24), 500, 30,200, 50);
         titleWidth.setForeground(ColorController.getWhiteColor());
         widthText=new JTextField();
         widthText.setBounds(700, 35, 100, 40);
         widthText.setFont(FontController.getPrimaryFont(0, 24));
         
-         titleHeight = LabelController.addLabel("Height Node:", FontController.getPrimaryFont(1, 24), 500, 120,200, 50);
+        titleHeight = LabelController.addLabel("Height Node:", FontController.getPrimaryFont(1, 24), 500, 120,200, 50);
         titleHeight.setForeground(ColorController.getWhiteColor());
         heightText=new JTextField();
         heightText.setBounds(700, 125, 100, 40);

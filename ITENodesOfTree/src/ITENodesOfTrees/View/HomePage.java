@@ -7,7 +7,9 @@ import javax.swing.*;
 import ControllersUI.*;
 
 public class HomePage extends JFrame {
-    public static JPanel rectangleFormatInput,rectangelCompleteP,textFormatInput;public static TreeFormatUI drowTree;
+    public static JPanel rectangleFormatInput,rectangelCompleteP,textFormatInput;
+    public static TreeFormatUI drowTree;
+    public static ListOfRectangle listOfRectangle;
     public HomePage() {
         initComponents();
     }
@@ -72,20 +74,23 @@ public class HomePage extends JFrame {
         addRectangeNodes.setLayout(new BorderLayout());
         addRectangeNodes.setBounds(800, 150, 300, 450);
         addRectangeNodes.add(ImageController.addPhoto("addnodes.png",294,441),BorderLayout.CENTER);
-        PanelsController.addActionPanel(addRectangeNodes, "RecNode");
+        PanelsController.addActionPanel(addRectangeNodes, "ListOfRectangle");
         HomePanel.add(titleBoxright);
         HomePanel.add(addRectangeNodes);
         HomePanel.add(titleApp);
         drowTree=new TreeFormatUI();
-         rectangelCompleteP=new RectangleComplete();
-         textFormatInput=new TextFormatInput();
-        rectangleFormatInput=new RectangleFormatInput();
+        rectangelCompleteP=new RectangleComplete();
+        textFormatInput=new TextFormatInput();
+        rectangleFormatInput=new RectangleFormatUI();
+        listOfRectangle=new ListOfRectangle();
+        backgroundPanel.add(listOfRectangle);
         backgroundPanel.add(rectangelCompleteP);
         backgroundPanel.add(textFormatInput);
         backgroundPanel.add(rectangleFormatInput);
         backgroundPanel.add(HomePanel);
         backgroundPanel.add(exitP);
         backgroundPanel.add(drowTree);
+        MainPanels.addPanel(listOfRectangle);
         MainPanels.addPanel(drowTree);
         MainPanels.addPanel(HomePanel);
         MainPanels.addPanel(rectangleFormatInput);
@@ -95,6 +100,7 @@ public class HomePage extends JFrame {
         rectangelCompleteP.setVisible(false);
         textFormatInput.setVisible(false);
         rectangleFormatInput.setVisible(false);
+        listOfRectangle.setVisible(false);
         add(backgroundPanel);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         setVisible(true);

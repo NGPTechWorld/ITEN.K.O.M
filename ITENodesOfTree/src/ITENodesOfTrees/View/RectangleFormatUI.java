@@ -5,12 +5,12 @@ import javax.swing.*;
 import ControllersUI.*;
 import java.awt.event.*;
 
-public class RectangleFormatInput extends JPanel{
+public class RectangleFormatUI extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static OutputUI outputUI;
     public static JTextPane inpuTextField;
     public static JPanel textPanel;
-    public RectangleFormatInput(){
+    public RectangleFormatUI(){
         initComponents();
     }
     private void initComponents(){

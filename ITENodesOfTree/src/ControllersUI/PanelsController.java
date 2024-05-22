@@ -41,6 +41,9 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    case "ListOfRectangle":
+                        switchPanels("ListOfRectangle","Home","");
+                    break;
                     case "RectangelComplete":
                         switchPanels("RectangleComplete","Home","");
                     break;
@@ -127,32 +130,35 @@ public class PanelsController {
                 switch (action) {
                     case "AddTreeBuild":
                         try {
-                            
                             String name=AddNodeTree.nameText.getText();
-                            // int width=Integer.parseInt(AddNodeTree.widthText.getText());
-                            // int height=Integer.parseInt(AddNodeTree.heightText.getText());
-                            TreeFormatController.addNodeToTree(name, 10, 11);
-                            if(TreeFormatController.isEndTree(TreeFormatController.treeRoot)){
-                                AddNodeTree.nameText.setVisible(false);
-                                AddNodeTree.widthText.setVisible(false);
-                                AddNodeTree.heightText.setVisible(false);
-                                AddNodeTree.btnAdd.setVisible(false);
-                                AddNodeTree.titleHeight.setVisible(false);
-                                AddNodeTree.titleName.setVisible(false);
-                                AddNodeTree.titleWidth.setVisible(false);
-                                AddNodeTree.btncheck.setVisible(true);
+                                // int width=Integer.parseInt(AddNodeTree.widthText.getText());
+                                // int height=Integer.parseInt(AddNodeTree.heightText.getText());
+                            if(nowPanel.equals("addTreeFormat")){
+                                
+                                TreeFormatController.addNodeToTree(name, 10, 11);
+                                if(TreeFormatController.isEndTree(TreeFormatController.treeRoot)){
+                                    AddNodeTree.nameText.setVisible(false);
+                                    AddNodeTree.widthText.setVisible(false);
+                                    AddNodeTree.heightText.setVisible(false);
+                                    AddNodeTree.btnAdd.setVisible(false);
+                                    AddNodeTree.titleHeight.setVisible(false);
+                                    AddNodeTree.titleName.setVisible(false);
+                                    AddNodeTree.titleWidth.setVisible(false);
+                                    AddNodeTree.btncheck.setVisible(true);
+                                }
                             }
+                            
                         } catch (Exception i) {
                             
                         }
                        
                     break;
                     case "EportTreeFormat":
-                        if(nowPanel=="TextFormatInput"){
+                        if(nowPanel.equals("TextFormatInput")){
                             TreeFormatUI.bt.updateTree(DataBase.rootRectangle);
                             TreeFormatUI.addNodeTree.setVisible(false);
                             switchPanels("TreeFormatUI", "TextFormatInput", "RectangelComplete");
-                        }else if(nowPanel=="RectangleFormatInput"){
+                        }else if(nowPanel.equals("RectangleFormatInput")){
                             TreeFormatUI.bt.updateTree(DataBase.rootRectangle);
                             TreeFormatUI.addNodeTree.setVisible(false);
                             switchPanels("TreeFormatUI", "RectangleFormatInput", "RectangelComplete");
@@ -184,15 +190,15 @@ public class PanelsController {
                         try {
                             String[] s=RectangleFormatController.readFileToStringArray();
                             RectangleFormatController.Import(s);
-                            RectangleFormatInput.stateCheck.setText("Done!");
+                            RectangleFormatUI.stateCheck.setText("Done!");
                             
                             // RectangleFormatInput.inpuTextField.setText();
-                            RectangleFormatInput.stateCheck.setVisible(true);
-                            RectangleFormatInput.outputUI.setVisible(true);
+                            RectangleFormatUI.stateCheck.setVisible(true);
+                            RectangleFormatUI.outputUI.setVisible(true);
                         } catch (Exception i) {
-                            RectangleFormatInput.stateCheck.setText("Error input!!");
-                            RectangleFormatInput.outputUI.setVisible(false);
-                            RectangleFormatInput.stateCheck.setVisible(true);
+                            RectangleFormatUI.stateCheck.setText("Error input!!");
+                            RectangleFormatUI.outputUI.setVisible(false);
+                            RectangleFormatUI.stateCheck.setVisible(true);
                         }
                         
                         
@@ -280,10 +286,10 @@ public class PanelsController {
                         TextFormatInput.inpuTextField.setText("");
                         TextFormatInput.outputUI.setVisible(false);
                         TextFormatInput.stateCheck.setVisible(false);
-                        RectangleFormatInput.inpuTextField.setText("");
-                        RectangleFormatInput.textPanel.setVisible(false);
-                        RectangleFormatInput.outputUI.setVisible(false);
-                        RectangleFormatInput.stateCheck.setVisible(false);
+                        RectangleFormatUI.inpuTextField.setText("");
+                        RectangleFormatUI.textPanel.setVisible(false);
+                        RectangleFormatUI.outputUI.setVisible(false);
+                        RectangleFormatUI.stateCheck.setVisible(false);
                         TreeFormatController.treeRoot=null;
                         TreeFormatUI.bt.updateTree(new Node());
                         if(nowPanel=="TreeFormatUI"){

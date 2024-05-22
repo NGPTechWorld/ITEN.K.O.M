@@ -1,7 +1,11 @@
 package ITETransTrees;
 
+import ITETransTrees.View.HomePageTrans;
+
 public class ITETransTrees {
         public static void main(String[] args) {
+
+            new HomePageTrans();
             //     String test1[] = {
             //         "B -> E,F",
             //         "C -> G",

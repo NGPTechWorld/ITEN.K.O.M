@@ -39,7 +39,7 @@ public class RectangleComplete extends JPanel{
         addTreeFormat.setBackground(Color.decode("#E7E7E7"));
         addTreeFormat.setLayout(new BorderLayout());
         addTreeFormat.setBounds(890, 150, 300, 400);
-        iconExit=ImageController.addPhoto("treeRectandle.png",200,200);
+        iconExit=ImageController.addPhoto("treeBinary.png",200,200);
         addTreeFormat.add(iconExit,BorderLayout.CENTER);
         
         PanelsController.addActionPanel(addTreeFormat, "addTreeFormat");

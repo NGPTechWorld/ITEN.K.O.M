@@ -1,3 +1,4 @@
+package MainAlgo;
 
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
@@ -33,7 +34,7 @@ public class MainUI extends JFrame {
         backgroundPanel.setLayout(null);
         // ------------------------------------ 
         JPanel HomePanel=new JPanel();
-        JLabel titleApp = LabelController.addLabel("ITE Main", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
+        JLabel titleApp = LabelController.addLabel("ITE N.K.O.M Main", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
         JLabel titleBoxleft = LabelController.addLabel("ITE Nodes Of Trees", FontController.getPrimaryFont(1, 28), 160, 625,400, 50);
         JLabel titleBoxright = LabelController.addLabel("ITE Trans Trees", FontController.getPrimaryFont(1, 28), 750, 625,400, 50);
         JPanel treeGeneric=PanelsController.roundedBorder(60);
@@ -50,7 +51,7 @@ public class MainUI extends JFrame {
         titleBoxleft.setForeground(ColorController.getWhiteColor());
         titleBoxright.setForeground(ColorController.getWhiteColor());
 
-        HomePanel.setName("Home");
+        HomePanel.setName("HomeMain");
         HomePanel.setBounds(0, 10, 1280, 700);
         HomePanel.setLayout(null);
         HomePanel.setOpaque(false);
@@ -61,9 +62,8 @@ public class MainUI extends JFrame {
         treeGeneric.setBackground(Color.decode("#E7E7E7"));
         treeGeneric.setLayout(new BorderLayout());
         treeGeneric.setBounds(150, 150, 1000, 200);
-        treeGeneric.add(ImageController.addPhoto("treeGeneric.png",280,280),BorderLayout.CENTER);
-        PanelsController.addActionPanel(treeGeneric, "RectangelComplete");
-       // HomePanel.add(titleBoxleft);
+        treeGeneric.add(ImageController.addPhoto("ITENODESOFTREE.png",1000,200),BorderLayout.CENTER);
+        PanelsController.addActionPanel(treeGeneric, "ITENODESOFTREE");
         HomePanel.add(treeGeneric);
 
         treeBinary.setName("treeBinary");
@@ -71,16 +71,13 @@ public class MainUI extends JFrame {
         treeBinary.setBackground(Color.decode("#E7E7E7"));
         treeBinary.setLayout(new BorderLayout());
         treeBinary.setBounds(150, 450, 1000, 200);
-        treeBinary.add(ImageController.addPhoto("treeBinary.png",250,250),BorderLayout.CENTER);
-        PanelsController.addActionPanel(treeBinary, "ListOfRectangle");
-        //HomePanel.add(titleBoxright);
+        treeBinary.add(ImageController.addPhoto("ITETRANSTREES.png",1000,200),BorderLayout.CENTER);
+        PanelsController.addActionPanel(treeBinary, "ITETRANSTREES");
         HomePanel.add(treeBinary);
         HomePanel.add(titleApp);
-        
         backgroundPanel.add(HomePanel);
         backgroundPanel.add(exitP);
         MainPanels.addPanel(HomePanel);
-
         add(backgroundPanel);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         setVisible(true);

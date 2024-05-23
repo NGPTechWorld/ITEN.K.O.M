@@ -2,9 +2,14 @@ package ControllersUI;
 
 import javax.swing.*;
 import javax.swing.text.*;
+
+import ITENodesOfTrees.ITENodsOfTree;
 import ITENodesOfTrees.Controller.*;
 import ITENodesOfTrees.Module.Node;
 import ITENodesOfTrees.View.*;
+import ITETransTrees.ITETransTrees;
+import MainAlgo.ITEmain;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -41,6 +46,19 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    case "ITENODESOFTREE":
+                        try {
+                            ITENodsOfTree.main(null);
+                            ITEmain.mainUI.dispose();
+                            
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    break;
+                    case "ITETRANSTREES":
+                        ITETransTrees.main(null);
+                        ITEmain.mainUI.dispose();
+                    break;
                     case "ListOfRectangle":
                         switchPanels("ListOfRectangle","Home","");
                     break;

@@ -5,6 +5,15 @@ import ITETransTrees.View.HomePageTrans;
 public class ITETransTrees {
         public static void main(String[] args) {
 
+            /*
+             * 
+             *
+A -> B,C,D,E
+B -> F,G,H
+C -> I
+D -> J
+E -> K
+             */
             new HomePageTrans();
             //     String test1[] = {
             //         "B -> E,F",

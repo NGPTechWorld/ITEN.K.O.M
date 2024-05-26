@@ -8,6 +8,7 @@ import ITENodesOfTrees.Controller.*;
 import ITENodesOfTrees.Module.Node;
 import ITENodesOfTrees.View.*;
 import ITETransTrees.ITETransTrees;
+import ITETransTrees.Controller.GenericTreeController;
 import MainAlgo.ITEmain;
 
 import java.awt.*;
@@ -46,9 +47,7 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
-                    case "treeGeneric":
-                        switchPanels("GenericTreeUI", "HomePageTrans", "");
-                    break;
+                    
                     case "ITENODESOFTREE":
                         try {
                             ITENodsOfTree.main(null);
@@ -111,6 +110,11 @@ public class PanelsController {
                         
                         
                     break;
+                    //Q2
+                    case "treeGeneric":
+                        switchPanels("GenericTreeUI", "HomePageTrans", "");
+                    break;
+                    
                     default:
                         //switchPanels(action);
                         break;
@@ -154,6 +158,7 @@ public class PanelsController {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
+                    //Q1
                     case "AddTreeBuild":
                         try {
                                 //System.out.println(TreeFormatUI.addNodeTree.nameText.getText());
@@ -249,10 +254,20 @@ public class PanelsController {
                             switchPanels("TextFormatInput", "RectangleFormatInput", "EportRectangleFormat");
                         }
                     break;
+                    //Q2
+                    case "CheckFileQ2":
+                        try {
+                            GenericTreeController.Import(GenericTreeController.readFileToStringArray());
+                            GenericTreeController.dfs(DataBase.G_root, null);
+                        } catch (Exception ee) {
+                            
+                        }
+                    break;
                     default:
                         //switchPanels(action);
                         break;
                 }
+                
             }
 
             @Override

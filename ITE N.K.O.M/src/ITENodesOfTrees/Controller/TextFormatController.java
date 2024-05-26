@@ -16,7 +16,7 @@ public class TextFormatController {
     private static int[] sum;
     final static int INF = 10000;
 
-    public static void Import(String s) {
+    public static void Import(String s) throws Exception {
         DataBase.TextRectangle = s;
         sum = new int[DataBase.TextRectangle.length()];
         for (int i = 0; i < DataBase.TextRectangle.length(); i++) {
@@ -26,6 +26,14 @@ public class TextFormatController {
                 sum[i]--;
             if (i != 0)
                 sum[i] += sum[i - 1];
+            // throw if sum<0
+            if(sum[i]<0)
+                throw new Exception();
+        
+        }
+        // if(sum[DataBase.TextRectangle.length()-1]!=0) throw 
+        if(sum[DataBase.TextRectangle.length()-1]!=0) {
+            throw new Exception();
         }
         for (int i = 0; i < DataBase.TextRectangle.length(); i++) {
             if (Invalid(DataBase.TextRectangle.charAt(i)))

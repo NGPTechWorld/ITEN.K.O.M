@@ -18,21 +18,21 @@ public class BinaryTreePanel extends JPanel {
     }
     public BinaryTreePanel() {
         this.treeRec = DataBase.rootRectangle;
-        setPreferredSize(new Dimension(maxX+200,maxY+200));
+        //setPreferredSize(new Dimension(maxX+300,maxY+300));
         setLayout(new BorderLayout());
         this.setOpaque(false);
         //this.setBackground(Color.BLACK);
         setLayout(null);
         JPanel plur=new JPanel();
         plur.setOpaque(false);
-        plur.setSize(2000, 500);
+        //plur.setSize(2000, 500);
         add(plur,BorderLayout.CENTER);
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawTree(g, getWidth() / 2, 30, treeRec, getWidth() / 4);
+        drawTree(g,720, 30, treeRec,1280);
         //drawTree(g, 600, 30, treeRec, 200);
     }
 

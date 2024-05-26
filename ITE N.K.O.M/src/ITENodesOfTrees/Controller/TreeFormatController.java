@@ -1,7 +1,7 @@
 package ITENodesOfTrees.Controller;
 
 import ITENodesOfTrees.Module.Node;
-import ITENodesOfTrees.View.TreeFormatUI;
+import ITENodesOfTrees.View.*;
 
 public class TreeFormatController {
     static int ch=0;
@@ -15,7 +15,8 @@ public class TreeFormatController {
             ch=0;
             find(treeRoot,null,name);
         }
-        TreeFormatUI.bt.updateTree(treeRoot);
+      
+        TreeFormatUI.treepanel.updateTree(treeRoot);
         Node.dfs(treeRoot);
     }
     public static Node searchNode(Node root,Node father){

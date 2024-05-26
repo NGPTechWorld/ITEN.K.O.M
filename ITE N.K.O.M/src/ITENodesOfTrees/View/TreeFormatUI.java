@@ -12,7 +12,7 @@ public class TreeFormatUI extends JPanel{
     public static JTextPane inpuTextField;
     public static JPanel textPanel;
     public static AddNodeTree addNodeTree;
-    public static BinaryTreePanel bt;
+    public static TreePanel treepanel;
     public TreeFormatUI(){
         initComponents();
     }
@@ -39,19 +39,19 @@ public class TreeFormatUI extends JPanel{
         PanelsController.addActionOutput(btnRset, "Clear");
         stateCheck = LabelController.addLabel("Error!", FontController.getPrimaryFont(1, 20), 20, 250,200, 50);
         stateCheck.setForeground(ColorController.secoundColorlight2());
-        bt=new BinaryTreePanel();
+        treepanel=new TreePanel();
         
-        JScrollPane scrollPane = new JScrollPane(bt);
-        scrollPane.setOpaque(false);
+         JScrollPane scrollPane = new JScrollPane(treepanel);
+         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
-        scrollPane.setBorder(null);
-        scrollPane.setBounds(20,90,1240,390);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        JScrollBar scrollBar1 = scrollPane.getHorizontalScrollBar();
-        scrollBar1.setUI(new CustomScrollBarUI());
-        JScrollBar scrollBar2 = scrollPane.getVerticalScrollBar();
-        scrollBar2.setUI(new CustomScrollBarUI());
+         scrollPane.setBorder(null);
+         scrollPane.setBounds(20,90,1240,390);
+         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        // JScrollBar scrollBar1 = scrollPane.getHorizontalScrollBar();
+        // scrollBar1.setUI(new CustomScrollBarUI());
+        // JScrollBar scrollBar2 = scrollPane.getVerticalScrollBar();
+        // scrollBar2.setUI(new CustomScrollBarUI());
         addNodeTree=new AddNodeTree();
         add(addNodeTree);
         add(outputUI);

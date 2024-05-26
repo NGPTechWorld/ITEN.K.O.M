@@ -9,13 +9,11 @@ import ControllersUI.FontController;
 import ControllersUI.ImageController;
 import ControllersUI.LabelController;
 import ControllersUI.PanelsController;
-import ITENodesOfTrees.Module.*;
-
 
 public class AddNodeTree extends JLabel {
-    public static JTextField nameText,widthText,heightText;
-    public static JLabel iconExit,titleName,titleWidth,titleHeight;
-    public static JPanel btnAdd,btnClc,btncheck;
+    public  JTextField nameText,widthText,heightText;
+    public  JLabel iconExit,titleName,titleWidth,titleHeight;
+    public  JPanel btnAdd,btnClc,btncheck;
     public AddNodeTree(){
         initComponents();
     }

@@ -50,7 +50,7 @@ public class HomePageTrans extends JFrame {
         titleBoxleft.setForeground(ColorController.getWhiteColor());
         titleBoxright.setForeground(ColorController.getWhiteColor());
 
-        HomePanel.setName("Home");
+        HomePanel.setName("HomePageTrans");
         HomePanel.setBounds(0, 10, 1280, 700);
         HomePanel.setLayout(null);
         HomePanel.setOpaque(false);
@@ -62,7 +62,7 @@ public class HomePageTrans extends JFrame {
         treeGeneric.setLayout(new BorderLayout());
         treeGeneric.setBounds(200, 150, 300, 450);
         treeGeneric.add(ImageController.addPhoto("treeGeneric.png",280,280),BorderLayout.CENTER);
-        PanelsController.addActionPanel(treeGeneric, "RectangelComplete");
+        PanelsController.addActionPanel(treeGeneric, "treeGeneric");
         HomePanel.add(titleBoxleft);
         HomePanel.add(treeGeneric);
 
@@ -77,12 +77,15 @@ public class HomePageTrans extends JFrame {
         HomePanel.add(treeBinary);
         HomePanel.add(titleApp);
         
+        GenericTreeUI genericTreeUI=new GenericTreeUI();
+        backgroundPanel.add(genericTreeUI);
         backgroundPanel.add(HomePanel);
         backgroundPanel.add(exitP);
         MainPanels.addPanel(HomePanel);
-
+        MainPanels.addPanel(genericTreeUI);
         add(backgroundPanel);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
         setVisible(true);
+        genericTreeUI.setVisible(false);
     }
 }

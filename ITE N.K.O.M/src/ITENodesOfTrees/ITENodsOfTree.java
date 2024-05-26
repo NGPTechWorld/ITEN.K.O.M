@@ -26,6 +26,7 @@ public class ITENodsOfTree {
         // RectangleFormatController.Export(TextFormatController.root);
         // System.out.println(TextFormatController.export(TextFormatController.root));
         new DataBase();
+        System.out.println(DataBase.rootRectangle.value);
         new HomePage();
         //new addNodeTree(TextFormatController.root);
         // Node root=new Node("-",70,60);

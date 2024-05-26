@@ -1,13 +1,15 @@
-package ITETransTrees.Module;
+package ITETransTrees.Controller;
 
 import java.util.*;
+import ITETransTrees.Module.*;
 
-public class Tree {
+public class GenericTreeController {
+
     NodeGeneric G_root, B_root;
     List<String> edges = new ArrayList<>();
     HashMap<String, String[]> frequency = new HashMap<>();
 
-    void Import() {
+    void Export() {
         if (G_root == null)
             return;
         GetEdges();
@@ -32,7 +34,7 @@ public class Tree {
         }
     }
 
-    void Export(String[] s) {
+    void Import(String[] s) {
 
         HashMap<String, Boolean> Root = new HashMap<>();
         for (String str : s) {

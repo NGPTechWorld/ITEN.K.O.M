@@ -41,7 +41,7 @@ public class OutputUI extends JPanel{
         treeFormat.setBackground(Color.decode("#E7E7E7"));
         treeFormat.setLayout(new BorderLayout());
         treeFormat.setBounds(900, 20, 160, 160);
-        iconExit=ImageController.addPhoto("treeRectandle.png",120,120);
+        iconExit=ImageController.addPhoto("treeBinary.png",120,120);
         treeFormat.add(iconExit,BorderLayout.CENTER);
         PanelsController.addActionOutput(treeFormat, "EportTreeFormat");
 

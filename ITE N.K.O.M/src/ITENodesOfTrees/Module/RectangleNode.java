@@ -52,7 +52,7 @@ public class RectangleNode {
         return Rec;
     }
 
-    RectangleNode Rectangle(List<Node> Rec) {
+    Node Rectangle(List<Node> Rec) {
         List<RectangleNode> Nodes = new ArrayList<>();
         for (int i = 0; i < Rec.size(); i++) {
             List<Integer> Index = new ArrayList<>();
@@ -70,7 +70,7 @@ public class RectangleNode {
                     continue;
                 for (RectangleNode node : RecNodes) {
                     if (node.Rectangles.size() == Rec.size())
-                        return node;
+                        return convert(node);
                     Nodes.add(node);
                 }
             }
@@ -89,5 +89,14 @@ public class RectangleNode {
             counter += (Rectangle(collection) != null ? 1 : 0);
         }
         return counter;
+    }
+
+    Node convert(RectangleNode root) {
+        if (root == null)
+            return null;
+        Node node = new Node(root.value, root.width, root.height);
+        node.leftChild = convert(root.left);
+        node.rightChild = convert(root.right);
+        return node;
     }
 }

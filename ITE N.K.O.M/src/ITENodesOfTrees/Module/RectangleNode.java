@@ -19,7 +19,7 @@ public class RectangleNode {
         this.right = right;
     }
 
-    List<RectangleNode> collecting(RectangleNode left, RectangleNode right) {
+    public static List<RectangleNode> collecting(RectangleNode left, RectangleNode right) {
 
         for (Integer Index : left.Rectangles) {
             if (right.Rectangles.contains(Index))
@@ -52,7 +52,7 @@ public class RectangleNode {
         return Rec;
     }
 
-    Node Rectangle(List<Node> Rec) {
+    public static Node Rectangle(List<Node> Rec) {
         List<RectangleNode> Nodes = new ArrayList<>();
         for (int i = 0; i < Rec.size(); i++) {
             List<Integer> Index = new ArrayList<>();
@@ -78,7 +78,7 @@ public class RectangleNode {
         return null;
     }
 
-    int NumberOfRectangles(List<Node> Nodes) {
+    public static int NumberOfRectangles(List<Node> Nodes) {
         int counter = 0;
         for (int i = 0; i < (1 << Nodes.size()); i++) {
             List<Node> collection = new ArrayList<>();
@@ -91,7 +91,7 @@ public class RectangleNode {
         return counter;
     }
 
-    Node convert(RectangleNode root) {
+    public static Node convert(RectangleNode root) {
         if (root == null)
             return null;
         Node node = new Node(root.value, root.width, root.height);

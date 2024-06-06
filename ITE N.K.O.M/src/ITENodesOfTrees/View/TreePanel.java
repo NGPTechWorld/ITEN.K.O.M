@@ -48,12 +48,10 @@ public class TreePanel extends JPanel {
         AffineTransform originalTransform = g2d.getTransform();
         g2d.scale(zoomFactor, zoomFactor);
 
-        
-            nodeLocations = new HashMap<>();
-            int totalTreeWidth = getSubtreeWidth(tree);
-            calculateNodeLocations(tree, getWidth() / 2, 50, nodeLocations, totalTreeWidth / 2);
-            drawTree(g2d, tree);
-        
+        nodeLocations = new HashMap<>();
+        int totalTreeWidth = getSubtreeWidth(tree);
+        calculateNodeLocations(tree, getWidth() / 2, 50, nodeLocations, totalTreeWidth / 2);
+        drawTree(g2d, tree);
 
         g2d.setTransform(originalTransform);
     }
@@ -70,10 +68,10 @@ public class TreePanel extends JPanel {
         int maxSubtreeWidth = Math.max(leftWidth, rightWidth) + horizontalSpacing;
 
         if (node.leftChild != null) {
-            calculateNodeLocations(node.leftChild, x - offsetX, y + verticalSpacing, nodeLocations, maxSubtreeWidth / 2);
+            calculateNodeLocations(node.leftChild, x - maxSubtreeWidth / 2, y + verticalSpacing, nodeLocations, maxSubtreeWidth / 2);
         }
         if (node.rightChild != null) {
-            calculateNodeLocations(node.rightChild, x + offsetX, y + verticalSpacing, nodeLocations, maxSubtreeWidth / 2);
+            calculateNodeLocations(node.rightChild, x + maxSubtreeWidth / 2, y + verticalSpacing, nodeLocations, maxSubtreeWidth / 2);
         }
     }
 
@@ -94,9 +92,6 @@ public class TreePanel extends JPanel {
         Point point = nodeLocations.get(node);
         int x = point.x;
         int y = point.y;
-        
-System.out.println("x"+x);
-System.out.println("y"+y);
 
         g2d.setColor(Color.WHITE);
         g2d.fillOval(x - nodeRadius, y - nodeRadius, 2 * nodeRadius, 2 * nodeRadius);

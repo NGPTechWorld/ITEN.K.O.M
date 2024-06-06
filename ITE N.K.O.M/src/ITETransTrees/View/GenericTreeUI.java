@@ -53,7 +53,7 @@ public class GenericTreeUI extends JPanel{
         add(btnCheck);
         add(stateCheck);
         add(titlePage);
-  
+        outputUIGB.setVisible(false);
         stateCheck.setVisible(false);
 }
 }

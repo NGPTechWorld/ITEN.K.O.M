@@ -55,7 +55,7 @@ public class AddNodeTree extends JLabel {
         heightText.setFont(FontController.getPrimaryFont(0, 24));
 
         btnAdd=PanelsController.addBtnPanle(950, 30, "Add Node", ColorController.firstColorDark());
-        PanelsController.addActionOutput(btnAdd, "AddTreeBuild");
+        
         btnClc=PanelsController.addBtnPanle(950, 110, "Clear", ColorController.secoundColorDark());
         PanelsController.addActionOutput(btnClc, "Clear");
         btncheck=PanelsController.addBtnPanle(950, 30, "Check Tree", ColorController.firstColor());

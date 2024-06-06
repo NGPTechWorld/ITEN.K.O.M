@@ -17,6 +17,10 @@ public class GenericTreeController {
     
     public static HashMap<String, String[]> frequency = new HashMap<>();
 
+    public static void printGenericTree(){
+        for(String s:DataBase.genericEdges)
+            System.out.println(s);
+    }
     public static void Export() {
         if (DataBase.G_root == null)
             return;

@@ -30,18 +30,19 @@ public class ListOfRectangle extends JPanel{
         outputUI=new OutputUI();
         addNodeTree=new AddNodeTree();
         addNodeTree.setBounds(0, 130, 1280, 200);
-        JPanel btnShowNumberRecNow=PanelsController.addBtnPanle(200, 360, "Show Number Rectangle", ColorController.firstColor());
-        PanelsController.addActionOutput(btnShowNumberRecNow, "OpenFile");
+        PanelsController.addActionOutput(addNodeTree.btnAdd, "AddRec");
+        JPanel btnShowNumberRecNow=PanelsController.addBtnPanle(200, 360, "Show Rectangle", ColorController.firstColor());
+        PanelsController.addActionOutput(btnShowNumberRecNow, "ShowRectangle");
         JLabel titlenumRecNow=LabelController.addLabel("Number of Rectangle Added : ", FontController.getPrimaryFont(1, 22), 100, 430,350, 50);
-        numRecNow=LabelController.addLabel("111111", FontController.getPrimaryFont(1, 22), 400, 430,200, 50);
+        numRecNow=LabelController.addLabel("0", FontController.getPrimaryFont(1, 22), 400, 430,200, 50);
         titlenumRecNow.setForeground(ColorController.getWhiteColor());
         numRecNow.setForeground(ColorController.getWhiteColor());
         btnShowNumberRecNow.setSize(300, 50);
         
-        JPanel btnShoRec=PanelsController.addBtnPanle(800, 360, "Show Rectangle", ColorController.secoundColor());
-        PanelsController.addActionOutput(btnShoRec, "OpenFile");
+        JPanel btnShoRec=PanelsController.addBtnPanle(800, 360, "Show Number Rectangle", ColorController.secoundColor());
+        PanelsController.addActionOutput(btnShoRec, "ShowNumberRectangle");
         JLabel titlenumRecProp=LabelController.addLabel("Posible Number of Rectangle : ", FontController.getPrimaryFont(1, 22), 700, 430,350, 50);
-        numRecProp=LabelController.addLabel("111111", FontController.getPrimaryFont(1, 22), 1000, 430,200, 50);
+        numRecProp=LabelController.addLabel("0", FontController.getPrimaryFont(1, 22), 1000, 430,200, 50);
         titlenumRecProp.setForeground(ColorController.getWhiteColor());
         numRecProp.setForeground(ColorController.getWhiteColor());
         btnShoRec.setSize(300, 50);
@@ -62,5 +63,6 @@ public class ListOfRectangle extends JPanel{
         add(titlenumRecNow);
         add(numRecNow);
         add(btnShowNumberRecNow);
+        outputUI.setVisible(false);
     }
 }

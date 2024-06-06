@@ -6,9 +6,12 @@ import javax.swing.text.*;
 import ITENodesOfTrees.ITENodsOfTree;
 import ITENodesOfTrees.Controller.*;
 import ITENodesOfTrees.Module.Node;
+import ITENodesOfTrees.Module.RectangleNode;
 import ITENodesOfTrees.View.*;
 import ITETransTrees.ITETransTrees;
 import ITETransTrees.Controller.GenericTreeController;
+import ITETransTrees.Module.NodeGeneric;
+import ITETransTrees.View.GenericTreeUI;
 import MainAlgo.ITEmain;
 
 import java.awt.*;
@@ -159,6 +162,39 @@ public class PanelsController {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 switch (action) {
                     //Q1
+                    case "ShowRectangle":
+                        try {
+                            DataBase.rootRectangle=RectangleNode.Rectangle(DataBase.Rectangles);
+                            if(DataBase.rootRectangle != null){
+                                ListOfRectangle.outputUI.setVisible(true);
+                                Node.dfs(DataBase.rootRectangle);
+                            }
+                        } catch (Exception ee) {
+                            // TODO: handle exception
+                        }
+                    break;
+                    case "ShowNumberRectangle":
+                        try {
+                            int num=RectangleNode.NumberOfRectangles(DataBase.Rectangles);
+                            ListOfRectangle.numRecProp.setText(String.valueOf(num));
+                        } catch (Exception ee) {
+                            // TODO: handle exception
+                        }
+                        
+                    break;
+                    case "AddRec":
+                        if(!(ListOfRectangle.addNodeTree.nameText.getText().equals("") && ListOfRectangle.addNodeTree.widthText.getText().equals("")  && ListOfRectangle.addNodeTree.heightText.getText().equals("") )){
+                            String name=ListOfRectangle.addNodeTree.nameText.getText();
+                            int width=Integer.parseInt(ListOfRectangle.addNodeTree.widthText.getText());
+                            int height=Integer.parseInt(ListOfRectangle.addNodeTree.heightText.getText());
+                            DataBase.Rectangles.add(new Node(name, width, height));
+                            ListOfRectangle.numRecNow.setText(String.valueOf(DataBase.Rectangles.size()));
+                            ListOfRectangle.addNodeTree.nameText.setText("");
+                            ListOfRectangle.addNodeTree.widthText.setText("");
+                            ListOfRectangle.addNodeTree.heightText.setText("");
+                        }
+                        
+                    break;
                     case "AddTreeBuild":
                         try {
                                 //System.out.println(TreeFormatUI.addNodeTree.nameText.getText());
@@ -185,7 +221,7 @@ public class PanelsController {
                     break;
                     case "EportTreeFormat":
                         if(nowPanel.equals("TextFormatInput")){
-                        
+                            BinaryTreeVisualization.main();
                             TreeFormatUI.treepanel.updateTree(DataBase.rootRectangle);
                             TreeFormatUI.addNodeTree.setVisible(false);
                             switchPanels("TreeFormatUI", "TextFormatInput", "RectangelComplete");
@@ -244,23 +280,39 @@ public class PanelsController {
                         }
                     break;
                     case "EportRectangleFormat":
-                        if(nowPanel=="TextFormatInput"){
+                        if(nowPanel=="TextFormatInput" || nowPanel=="ListOfRectangle"){
                             RectangleFormatController.Export(DataBase.rootRectangle);
                         }
                     break;
                     case "EportTextFormat":
-                        if(nowPanel=="RectangleFormatInput"){
+                        if(nowPanel=="RectangleFormatInput" || nowPanel=="ListOfRectangle"){
                             TextFormatInput.inpuTextField.setText(TextFormatController.export(DataBase.rootRectangle));
-                            switchPanels("TextFormatInput", "RectangleFormatInput", "EportRectangleFormat");
+                            switchPanels("TextFormatInput", nowPanel, "EportRectangleFormat");
                         }
                     break;
                     //Q2
                     case "CheckFileQ2":
                         try {
                             GenericTreeController.Import(GenericTreeController.readFileToStringArray());
-                            GenericTreeController.dfs(DataBase.G_root, null);
+                            if(DataBase.G_root!=null){
+                                System.out.println("Genreic Tree:");
+                            GenericTreeController.Export();
+                            GenericTreeController.printGenericTree();
+                                GenericTreeUI.outputUIGB.setVisible(true);
+                            }
+                                
                         } catch (Exception ee) {
                             
+                        }
+                    break;
+                    case "EportBinaryFormat":
+                        try {
+                            GenericTreeController.convertGtoB(DataBase.G_root);
+                            NodeGeneric p = new NodeGeneric();
+                            p.value = "parent";
+                            GenericTreeController.dfs(DataBase.B_root,p);
+                        } catch (Exception ee) {
+                            // TODO: handle exception
                         }
                     break;
                     default:
@@ -324,6 +376,9 @@ public class PanelsController {
     }
     public static void clearData(){
         System.out.println("Clearing..");
+                        ListOfRectangle.numRecNow.setText("0");
+                        ListOfRectangle.outputUI.setVisible(false);
+                        ListOfRectangle.numRecProp.setText("0");
                         TextFormatInput.inpuTextField.setText("");
                         TextFormatInput.outputUI.setVisible(false);
                         TextFormatInput.stateCheck.setVisible(false);

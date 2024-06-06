@@ -3,7 +3,7 @@ package ITENodesOfTrees.Controller;
 import ITENodesOfTrees.Module.Node;
 
 public class BT {
-   
+
     // AlZero***********************************
     // rotate
 
@@ -62,37 +62,58 @@ public class BT {
 
     // AlZero****************************************
     // to check merge all the tree
-    private void checkMerge(Node root) {
-        // Tree is empty
-        if (root == null) {
-            System.out.println("The tree is empty");
-            return;
-        }
-
+    /*
+     * private void checkMerge(Node root) {
+     * // Tree is empty
+     * if (root == null) {
+     * System.out.println("The tree is empty");
+     * return;
+     * }
+     * 
+     * // to check leaf
+     * if (root.rightChild == null && root.leftChild == null) {
+     * return;
+     * }
+     * 
+     * // recursive //check all the tree
+     * checkMerge(root.leftChild);
+     * checkMerge(root.rightChild);
+     * 
+     * // Check merge leftChild with rightChild
+     * if (root.value.equals("-") || root.value.equals("–")) {
+     * if (root.leftChild.width == root.rightChild.width) {
+     * System.out.println("you can merge " + root.leftChild.value + " and " +
+     * root.rightChild.value);
+     * } else {
+     * System.out.println("you can't merge " + root.leftChild.value + " and " +
+     * root.rightChild.value);
+     * }
+     * } else // "|"
+     * {
+     * if (root.leftChild.height == root.rightChild.height) {
+     * System.out.println("you can merge " + root.leftChild.value + " and " +
+     * root.rightChild.value);
+     * } else {
+     * System.out.println("you can't merge " + root.leftChild.value + " and " +
+     * root.rightChild.value);
+     * }
+     * }
+     * 
+     * }
+     */
+    boolean checkMerge(Node root) {
         // to check leaf
-        if (root.rightChild == null && root.leftChild == null) {
-            return;
+        if (root.rightChild == null || root.leftChild == null) {
+            return true;
         }
-
-        // recursive //check all the tree
-        checkMerge(root.leftChild);
-        checkMerge(root.rightChild);
-
         // Check merge leftChild with rightChild
         if (root.value.equals("-") || root.value.equals("–")) {
-            if (root.leftChild.width == root.rightChild.width) {
-                System.out.println("you can merge " + root.leftChild.value + " and " + root.rightChild.value);
-            } else {
-                System.out.println("you can't merge " + root.leftChild.value + " and " + root.rightChild.value);
-            }
-        } else // "|"
-        {
-            if (root.leftChild.height == root.rightChild.height) {
-                System.out.println("you can merge " + root.leftChild.value + " and " + root.rightChild.value);
-            } else {
-                System.out.println("you can't merge " + root.leftChild.value + " and " + root.rightChild.value);
-            }
+            if (root.leftChild.width != root.rightChild.width)
+                return false;
+        } else {
+            if (root.leftChild.height != root.rightChild.height)
+                return false;
         }
-
+        return (checkMerge(root.rightChild) & checkMerge(root.leftChild));
     }
 }

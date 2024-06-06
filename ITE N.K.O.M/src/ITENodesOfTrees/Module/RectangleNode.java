@@ -59,6 +59,8 @@ public class RectangleNode {
             Index.add(i);
             Nodes.add(new RectangleNode(Index, Rec.get(i).value, Rec.get(i).width, Rec.get(i).height, null, null));
         }
+        if (Rec.size() == 1)
+            return Rec.get(0);
         for (int i = 0; i < Nodes.size(); i++) {
             for (int j = 0; j < Nodes.size(); j++) {
                 if (i == j)

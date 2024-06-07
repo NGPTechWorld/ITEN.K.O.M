@@ -34,8 +34,8 @@ public class HomePageTrans extends JFrame {
         // ------------------------------------ 
         JPanel HomePanel=new JPanel();
         JLabel titleApp = LabelController.addLabel("ITE Trans Trees", FontController.getPrimaryFont(1, 38), 0, 50,1280, 50);
-        JLabel titleBoxleft = LabelController.addLabel("Add Tree Generic", FontController.getPrimaryFont(1, 28), 160, 625,400, 50);
-        JLabel titleBoxright = LabelController.addLabel("Add Tree Binary", FontController.getPrimaryFont(1, 28), 750, 625,400, 50);
+        JLabel titleBoxleft = LabelController.addLabel("Add Tree Generic", FontController.getPrimaryFont(1, 28), 450, 625,400, 50);
+
         JPanel treeGeneric=PanelsController.roundedBorder(60);
         JPanel treeBinary=PanelsController.roundedBorder(60);
 
@@ -48,7 +48,7 @@ public class HomePageTrans extends JFrame {
 
         titleApp.setForeground(ColorController.getWhiteColor());
         titleBoxleft.setForeground(ColorController.getWhiteColor());
-        titleBoxright.setForeground(ColorController.getWhiteColor());
+    
 
         HomePanel.setName("HomePageTrans");
         HomePanel.setBounds(0, 10, 1280, 700);
@@ -60,20 +60,12 @@ public class HomePageTrans extends JFrame {
         treeGeneric.setOpaque(false);
         treeGeneric.setBackground(Color.decode("#E7E7E7"));
         treeGeneric.setLayout(new BorderLayout());
-        treeGeneric.setBounds(200, 150, 300, 450);
+        treeGeneric.setBounds(500, 150, 300, 450);
         treeGeneric.add(ImageController.addPhoto("treeGeneric.png",280,280),BorderLayout.CENTER);
         PanelsController.addActionPanel(treeGeneric, "treeGeneric");
         HomePanel.add(titleBoxleft);
         HomePanel.add(treeGeneric);
 
-        treeBinary.setName("treeBinary");
-        treeBinary.setOpaque(false);
-        treeBinary.setBackground(Color.decode("#E7E7E7"));
-        treeBinary.setLayout(new BorderLayout());
-        treeBinary.setBounds(800, 150, 300, 450);
-        treeBinary.add(ImageController.addPhoto("treeBinary.png",250,250),BorderLayout.CENTER);
-        PanelsController.addActionPanel(treeBinary, "ListOfRectangle");
-        HomePanel.add(titleBoxright);
         HomePanel.add(treeBinary);
         HomePanel.add(titleApp);
         

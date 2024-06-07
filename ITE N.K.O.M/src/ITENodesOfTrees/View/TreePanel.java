@@ -38,7 +38,7 @@ public class TreePanel extends JPanel {
     public void updateTree(Node newRoot) {
         this.tree = newRoot;
         repaint();
-        System.out.println(this.getWidth());
+        //System.out.println(this.getWidth());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class TreePanel extends JPanel {
     }
 
     private void drawTree(Graphics2D g2d, Node node) {
-        if (node == null) {
+        if (node == null || node.value ==null) {
             return;
         }
 

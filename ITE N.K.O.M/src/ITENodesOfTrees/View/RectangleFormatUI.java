@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class RectangleFormatUI extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static OutputUI outputUI;
-    public static JPanel textPanel;
+    public static JPanel textPanel,rotateCheck;
     public RectangleFormatUI(){
         initComponents();
     }
@@ -40,10 +40,13 @@ public class RectangleFormatUI extends JPanel{
         PanelsController.addActionOutput(btnCheck, "CheckFile");
         JPanel btnRset=PanelsController.addBtnPanle(770, 200, "Clear", ColorController.secoundColor());
         PanelsController.addActionOutput(btnRset, "Clear");
+        rotateCheck=PanelsController.addBtnPanle(520, 300, "Rotate Rectangle", ColorController.firstColor());
+        PanelsController.addActionOutput(btnCheck, "rotateRec");
         stateCheck = LabelController.addLabel("Error!", FontController.getPrimaryFont(1, 20), 20, 250,200, 50);
         stateCheck.setForeground(ColorController.secoundColorlight2());
 
         add(inputlabel);
+        add(rotateCheck);
         add(outputUI);
         add(btnRset);
         add(btnOpenfile);
@@ -51,7 +54,7 @@ public class RectangleFormatUI extends JPanel{
         add(stateCheck);
         add(titlePage);
         outputUI.setVisible(false);
-    
+        rotateCheck.setVisible(false);
         stateCheck.setVisible(false);
 }
 }

@@ -15,6 +15,7 @@ public class HomePage extends JFrame {
     }
 
     private void initComponents() {
+        setIconImage(ImageController.getITENodesOfTree().getImage());
         setSize(1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -80,7 +81,7 @@ public class HomePage extends JFrame {
         HomePanel.add(titleApp);
         drowTree=new TreeFormatUI();
         rectangelCompleteP=new RectangleComplete();
-        textFormatInput=new TextFormatInput();
+        textFormatInput=new TextFormatUI();
         rectangleFormatInput=new RectangleFormatUI();
         listOfRectangle=new ListOfRectangle();
         backgroundPanel.add(listOfRectangle);

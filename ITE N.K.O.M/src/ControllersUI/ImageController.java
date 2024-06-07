@@ -29,18 +29,12 @@ public class ImageController {
         ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
         return resizedImageIcon;
     }
-    public static ImageIcon getITEBestIcon(){
-        String imagePath = imagesPath + "ITEBestIcon.png";
+    public static ImageIcon getITENodesOfTree(){
+        String imagePath = imagesPath + "rectangel.png";
         ImageIcon imageIcon = new ImageIcon(imagePath);
         return imageIcon;
     }
-    public static ImageIcon getBanar1Icon(){
-        String imagePath =  imagesPath + "banaer.png";
-        ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image resizedImage = imageIcon.getImage().getScaledInstance(1180, 250, Image.SCALE_SMOOTH);
-        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
-        return resizedImageIcon;
-    }
+
     public static ImageIcon getIcon(String name){
         String imagePath = imagesPath + name;
         ImageIcon imageIcon = new ImageIcon(imagePath);

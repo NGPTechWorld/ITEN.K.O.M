@@ -6,11 +6,11 @@ import javax.swing.*;
 import ControllersUI.*;
 import java.awt.event.*;
 
-public class TextFormatInput extends JPanel{
+public class TextFormatUI extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static OutputUI outputUI;
     public static JTextPane inpuTextField;
-    public TextFormatInput(){
+    public TextFormatUI(){
         initComponents();
     }
     private void initComponents(){
@@ -60,7 +60,7 @@ public class TextFormatInput extends JPanel{
         PanelsController.addActionOutput(btnCheck, "CheckText");
         JPanel btnRset=PanelsController.addBtnPanle(600, 300, "Clear", ColorController.secoundColor());
         PanelsController.addActionOutput(btnRset, "Clear");
-        stateCheck = LabelController.addLabel("", FontController.getPrimaryFont(1, 20), 20, 225,200, 50);
+        stateCheck = LabelController.addLabel("", FontController.getPrimaryFont(1, 20), 20, 225,300, 50);
         stateCheck.setForeground(ColorController.secoundColorlight2());
         //scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         // inpuTextField.setLineWrap(true);

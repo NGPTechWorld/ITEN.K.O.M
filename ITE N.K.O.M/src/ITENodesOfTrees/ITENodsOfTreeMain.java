@@ -3,10 +3,9 @@ import java.io.IOException;
 
 import ControllersUI.*;
 import ITENodesOfTrees.Module.Node;
-import ITENodesOfTrees.View.BinaryTreeVisualization;
 import ITENodesOfTrees.View.HomePage;
 
-public class ITENodsOfTree {
+public class ITENodsOfTreeMain {
     public static void dfs(Node node) {
         if (node == null)
             return;

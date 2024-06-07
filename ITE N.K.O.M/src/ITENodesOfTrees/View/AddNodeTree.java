@@ -59,7 +59,7 @@ public class AddNodeTree extends JLabel {
         btnClc=PanelsController.addBtnPanle(950, 110, "Clear", ColorController.secoundColorDark());
         PanelsController.addActionOutput(btnClc, "Clear");
         btncheck=PanelsController.addBtnPanle(950, 30, "Check Tree", ColorController.firstColor());
-        PanelsController.addActionOutput(btncheck, "Clear");
+        PanelsController.addActionOutput(btncheck, "CheckTree");
         
         add(btnAdd);
         add(btncheck);

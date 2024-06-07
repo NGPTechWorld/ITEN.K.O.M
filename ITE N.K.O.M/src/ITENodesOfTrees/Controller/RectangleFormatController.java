@@ -99,6 +99,7 @@ public class RectangleFormatController {
     }
 
     static void buildRec(int x, int y, Node node) {
+        if(node==null)return;
         if (!node.value.equals("-") && !node.value.equals("|")) {
             int in = 0;
             for (int i = x; i < x + node.width - 1; i++)

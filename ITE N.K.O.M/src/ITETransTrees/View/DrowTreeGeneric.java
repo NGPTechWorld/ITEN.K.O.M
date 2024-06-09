@@ -2,17 +2,14 @@ package ITETransTrees.View;
 
 
 import javax.swing.*;
-
-import ControllersUI.DataBase;
 import ITETransTrees.Module.NodeGeneric;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.util.*;
 
 
-public class DrawTreeGeneric extends JPanel {
+public class DrowTreeGeneric extends JPanel {
     NodeGeneric tree;
     double zoomFactor = 1.0;
     int nodeRadius = 20;
@@ -20,7 +17,7 @@ public class DrawTreeGeneric extends JPanel {
     int horizontalSpacing = 20;
     Map<NodeGeneric, Point> nodeLocations;
 
-    public DrawTreeGeneric() {
+    public DrowTreeGeneric() {
         this.tree = new NodeGeneric("N");
         setOpaque(false);
         addMouseWheelListener(new MouseAdapter() {

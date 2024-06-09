@@ -1,12 +1,10 @@
 package ITENodesOfTrees.View;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 import ControllersUI.ColorController;
 import ControllersUI.FontController;
-import ControllersUI.ImageController;
 import ControllersUI.LabelController;
 import ControllersUI.PanelsController;
 

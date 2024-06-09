@@ -41,17 +41,7 @@ public class TreeFormatUI extends JPanel{
         stateCheck.setForeground(ColorController.secoundColorlight2());
         treepanel=new TreePanel();
         treepanel.setBounds(20,90,1240,390);
-         //JScrollPane scrollPane = new JScrollPane(treepanel);
-        //  scrollPane.setOpaque(false);
-        // scrollPane.getViewport().setOpaque(false);
-        //  scrollPane.setBorder(null);
-        //  scrollPane.setBounds(20,90,1240,390);
-        //  scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //  scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        // JScrollBar scrollBar1 = scrollPane.getHorizontalScrollBar();
-        // scrollBar1.setUI(new CustomScrollBarUI());
-        // JScrollBar scrollBar2 = scrollPane.getVerticalScrollBar();
-        // scrollBar2.setUI(new CustomScrollBarUI());
+       
         addNodeTree=new AddNodeTree();
         PanelsController.addActionOutput(addNodeTree.btnAdd, "AddTreeBuild");
         add(addNodeTree);

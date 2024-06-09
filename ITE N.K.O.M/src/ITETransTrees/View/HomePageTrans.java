@@ -5,11 +5,12 @@ import javax.swing.*;
 import ControllersUI.*;
 
 public class HomePageTrans extends JFrame {
-    DrawerUI drawerUI;
+    DrowTreeUI drawerUI;
     public HomePageTrans() {
         initComponents();
     }
     private void initComponents() {
+        setIconImage(ImageController.getITETransTree().getImage());
         setName("HomePageTrans");
         setSize(1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -49,7 +50,7 @@ public class HomePageTrans extends JFrame {
         HomePanel.setLayout(null);
         HomePanel.setOpaque(false);
         backgroundPanel.setLayout(null);
-        drawerUI=new DrawerUI();
+        drawerUI=new DrowTreeUI();
 
         treeGeneric.setName("treeGeneric");
         treeGeneric.setOpaque(false);

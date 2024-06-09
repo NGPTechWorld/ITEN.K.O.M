@@ -38,7 +38,6 @@ public class TreePanel extends JPanel {
     public void updateTree(Node newRoot) {
         this.tree = newRoot;
         repaint();
-        //System.out.println(this.getWidth());
     }
 
     @Override

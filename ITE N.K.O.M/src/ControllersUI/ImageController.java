@@ -22,19 +22,22 @@ public class ImageController {
             e.printStackTrace();
         }
     }
-    public static ImageIcon getITEBestIcon(int width,int height){
-        String imagePath = imagesPath + "ITEBestIcon.png";
-        ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image resizedImage = imageIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
-        return resizedImageIcon;
-    }
+
     public static ImageIcon getITENodesOfTree(){
         String imagePath = imagesPath + "rectangel.png";
         ImageIcon imageIcon = new ImageIcon(imagePath);
         return imageIcon;
     }
-
+    public static ImageIcon getITETransTree(){
+        String imagePath = imagesPath + "treeGeneric.png";
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        return imageIcon;
+    }
+    public static ImageIcon getITEMain(){
+        String imagePath = imagesPath + "addnodes.png";
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        return imageIcon;
+    }
     public static ImageIcon getIcon(String name){
         String imagePath = imagesPath + name;
         ImageIcon imageIcon = new ImageIcon(imagePath);

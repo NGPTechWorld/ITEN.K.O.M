@@ -14,6 +14,7 @@ public class MainUI extends JFrame {
     }
 
     private void initComponents() {
+        setIconImage(ImageController.getITEMain().getImage());
         setSize(1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);

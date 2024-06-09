@@ -1,10 +1,6 @@
 package ControllersUI;
-
 import javax.swing.*;
 import javax.swing.text.*;
-import javax.swing.tree.TreeNode;
-import javax.xml.crypto.Data;
-
 import ITENodesOfTrees.ITENodsOfTreeMain;
 import ITENodesOfTrees.Controller.*;
 import ITENodesOfTrees.Module.Node;
@@ -15,10 +11,8 @@ import ITETransTrees.ITETransTrees;
 import ITETransTrees.Controller.BinaryTreeController;
 import ITETransTrees.Controller.GenericTreeController;
 import ITETransTrees.Module.NodeGeneric;
-import ITETransTrees.View.DrawerUI;
-import ITETransTrees.View.GenericTreeUI;
-import MainAlgo.ITEmain;
-
+import ITETransTrees.View.DrowTreeUI;
+import MainAlgo.ITEMain;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -50,6 +44,7 @@ public class PanelsController {
             }
         }
     }
+    // =========   Action   ==========
     public static void addActionPanel (JPanel panel,String action){
         MouseListener ms = new MouseListener() {
             @Override
@@ -59,7 +54,7 @@ public class PanelsController {
                     case "ITENODESOFTREE":
                         try {
                             ITENodsOfTreeMain.main(null);
-                            ITEmain.mainUI.dispose();
+                            ITEMain.mainUI.dispose();
                             
                         } catch (IOException e1) {
                             e1.printStackTrace();
@@ -69,10 +64,9 @@ public class PanelsController {
                         try {
                             ITETransTrees.main(null);
                         } catch (Exception e1) {
-                            // TODO Auto-generated catch block
                             e1.printStackTrace();
                         }
-                        ITEmain.mainUI.dispose();
+                        ITEMain.mainUI.dispose();
                     break;
                     case "ListOfRectangle":
                         switchPanels("ListOfRectangle","Home","");
@@ -90,10 +84,8 @@ public class PanelsController {
                         switchPanels("RectangleFormatInput", "RectangleComplete", "Home");
                     break;
                     case "addTreeFormat":   
-                        
                             TreeFormatUI.addNodeTree.setVisible(true);
                             TreeFormatUI.outputUI.setVisible(false);
-                        
                         clearData();
                         switchPanels("TreeFormatUI", "RectangleComplete", "Home");
                     break;
@@ -102,7 +94,6 @@ public class PanelsController {
                             try {
                                 TextFormatController.Import(action);
                             } catch (Exception e1) {
-                                // TODO Auto-generated catch block
                                 e1.printStackTrace();
                             }
                         }
@@ -118,35 +109,27 @@ public class PanelsController {
                         try {
                             DataBase.resetDataBase();
                         } catch (IOException e1) {
-                            // TODO Auto-generated catch block
                             e1.printStackTrace();
                         }
                         }
                         switchPanels(backPanel,"Home",preBackPanel);
-                        
-                        
                     break;
                     //Q2
                     case "treeGeneric":
                         switchPanels("GenericTreeUI", "HomePageTrans", "");
                     break;
-                    
                     default:
-                        //switchPanels(action);
+                        
                         break;
                 }
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
-
             }
-
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
                 if(action=="Exit"){
@@ -154,9 +137,7 @@ public class PanelsController {
                 }else{
                     panel.setBackground(ColorController.getWhiteColor());
                 }
-                
             }
-
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
                 if(action=="Exit"){
@@ -167,7 +148,6 @@ public class PanelsController {
             }
         };
         panel.addMouseListener(ms);
-
     } 
     public static void addActionOutput (JPanel panel,String action){
         MouseListener ms = new MouseListener() {
@@ -321,14 +301,6 @@ public class PanelsController {
                         }
                     break;
                     //Q2 =========================
-                    case "CheckFileQ2":
-                        try {
-                           
-                                
-                        } catch (Exception ee) {
-                            
-                        }
-                    break;
                     case "ConvertBtoG":
                         BinaryTreeController.convertBtoG(DataBase.B_root);
                         System.out.println("Binary Tree:");
@@ -339,7 +311,6 @@ public class PanelsController {
                         GenericTreeController.Export();
                         GenericTreeController.printGenericTree();
                         System.out.println("------------------------");
-
                     break;
                     case "ConvertGtoB":
                         try {
@@ -351,17 +322,17 @@ public class PanelsController {
                             }
                             switchPanels("DrawerUI", "GenericTreeUI", "HomePageTrans");
                             GenericTreeController.convertGtoB(DataBase.G_root);
-                            DrawerUI.drawTreeGeneric.updateTree(DataBase.G_root);
+                            DrowTreeUI.drawTreeGeneric.updateTree(DataBase.G_root);
                             NodeGeneric p = new NodeGeneric();
                             System.out.println("Binary Tree:");
                             p.value = "parent";
                             GenericTreeController.dfs(DataBase.B_root,p);
-                            DrawerUI.treePanel.updateTree(NodeGeneric.convert(DataBase.B_root));
+                            DrowTreeUI.treePanel.updateTree(NodeGeneric.convert(DataBase.B_root));
                             Node.dfs(NodeGeneric.convert(DataBase.B_root));
                             System.out.println();
                             System.out.println("------------------------");
                         } catch (Exception ee) {
-                            // TODO: handle exception
+                           
                         }
                     break;
                     case "ClearQ2":
@@ -369,13 +340,13 @@ public class PanelsController {
                             DataBase.resetDataBase();
                             System.out.println("Clear Done!");
                         } catch (IOException e1) {
-                            // TODO Auto-generated catch block
+                           
                             e1.printStackTrace();
                         }
 
                     break;
                     default:
-                        //switchPanels(action);
+                        
                         break;
                 }
                 
@@ -383,31 +354,20 @@ public class PanelsController {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
             }
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                if(action=="Exit"){
-                    
-                }else{
-                    panel.setBackground(ColorController.getWhiteColor());
-                }
-                
+
             }
 
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
-                if(action=="Exit"){
-
-                }else{
-                    panel.setBackground(Color.decode("#E7E7E7"));
-                }
+    
             }
         };
         panel.addMouseListener(ms);
@@ -444,7 +404,6 @@ public class PanelsController {
                         TextFormatUI.stateCheck.setVisible(false);
                         RectangleFormatUI.outputUI.setVisible(false);
                         RectangleFormatUI.stateCheck.setVisible(false);
-
                         TreeFormatController.treeRoot=null;
                         TreeFormatUI.treepanel.updateTree(new Node());
                         if(nowPanel.equals("TreeFormatUI")){

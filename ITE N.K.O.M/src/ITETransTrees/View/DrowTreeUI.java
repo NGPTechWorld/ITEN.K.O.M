@@ -9,16 +9,15 @@ import ControllersUI.ColorController;
 import ControllersUI.FontController;
 import ControllersUI.ImageController;
 import ControllersUI.LabelController;
-import ControllersUI.MainPanels;
 import ControllersUI.PanelsController;
 import ITENodesOfTrees.View.TreePanel;
 
-public class DrawerUI extends JPanel{
+public class DrowTreeUI extends JPanel{
     public static JLabel iconExit,stateCheck;
     public static JPanel textPanel;
     public static TreePanel treePanel;
-    public static DrawTreeGeneric drawTreeGeneric;
-    public DrawerUI(){
+    public static DrowTreeGeneric drawTreeGeneric;
+    public DrowTreeUI(){
         initComponents();
     }
     private void initComponents(){
@@ -48,7 +47,7 @@ public class DrawerUI extends JPanel{
 
         treePanel=new TreePanel();
         treePanel.setBounds(650, 170,610, 600);
-        drawTreeGeneric=new DrawTreeGeneric();
+        drawTreeGeneric=new DrowTreeGeneric();
         drawTreeGeneric.setBounds(10, 170,610, 600);
  
         add(binaryLabel);

@@ -1,12 +1,8 @@
 package ITETransTrees.View;
-
 import java.awt.*;
 import javax.swing.*;
-
 import ControllersUI.*;
-import ITENodesOfTrees.View.*;
 
-import java.awt.event.*;
 
 public class GenericTreeUI extends JPanel{
     public static JLabel iconExit,stateCheck;

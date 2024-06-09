@@ -2,7 +2,7 @@ package ITENodesOfTrees.View;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 
 import java.awt.BorderLayout;
 import ControllersUI.ColorController;

@@ -1,10 +1,7 @@
 package ITENodesOfTrees.View;
-
 import java.awt.*;
 import javax.swing.*;
-
 import ControllersUI.*;
-import java.awt.event.*;
 
 public class RectangleFormatUI extends JPanel{
     public static JLabel iconExit,stateCheck;

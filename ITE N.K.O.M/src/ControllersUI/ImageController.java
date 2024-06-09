@@ -10,7 +10,7 @@ import java.io.File;
 
 public class ImageController {
 
-    static String imagesPath = "resources/images/";
+    static String imagesPath = "C:\\Algo2\\ITE N.K.O.M\\ITE N.K.O.M\\resources\\images\\";
 
     public static void playSound(String filePath) {
         try {

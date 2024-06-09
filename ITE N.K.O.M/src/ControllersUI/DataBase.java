@@ -17,6 +17,8 @@ public class DataBase {
     public static List<String> genericEdges;
     public static NodeGeneric G_root, B_root;
     public DataBase() throws IOException{
+        G_root=new NodeGeneric();
+        B_root=new NodeGeneric();
         Rectangles=new ArrayList<>();
         genericEdges = new ArrayList<>();
         rootRectangle=new Node();
@@ -30,6 +32,8 @@ public class DataBase {
         inputFile.createNewFile();
     }
     public static void resetDataBase()throws IOException{
+        G_root=new NodeGeneric();
+        B_root=new NodeGeneric();
         Rectangles=new ArrayList<>();
         genericEdges = new ArrayList<>();
         rootRectangle=new Node();

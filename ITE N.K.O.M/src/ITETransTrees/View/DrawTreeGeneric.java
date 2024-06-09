@@ -3,6 +3,7 @@ package ITETransTrees.View;
 
 import javax.swing.*;
 
+import ControllersUI.DataBase;
 import ITETransTrees.Module.NodeGeneric;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.geom.AffineTransform;
 import java.util.*;
 
 
-class DrawTreeUI extends JPanel {
+public class DrawTreeGeneric extends JPanel {
     NodeGeneric tree;
     double zoomFactor = 1.0;
     int nodeRadius = 20;
@@ -19,8 +20,8 @@ class DrawTreeUI extends JPanel {
     int horizontalSpacing = 20;
     Map<NodeGeneric, Point> nodeLocations;
 
-    public DrawTreeUI(NodeGeneric root) {
-        this.tree = root;
+    public DrawTreeGeneric() {
+        this.tree = new NodeGeneric("N");
         setOpaque(false);
         addMouseWheelListener(new MouseAdapter() {
             @Override
@@ -104,37 +105,4 @@ class DrawTreeUI extends JPanel {
         }
     }
 }
-public class TreeExample {
-    public static void main(String[] args) {
-        // Create the root node
-        NodeGeneric root = new NodeGeneric("Root");
 
-        // Create child nodes
-        NodeGeneric child1 = new NodeGeneric("Child 1");
-        NodeGeneric child2 = new NodeGeneric("Child 2");
-        NodeGeneric child3 = new NodeGeneric("Child 3");
-
-        // Add children to root
-        root.child.add(child1);
-        root.child.add(child2);
-        root.child.add(child3);
-
-        // Create grandchildren
-        child1.child.add(new NodeGeneric("Grandchild 1.1"));
-        child1.child.add(new NodeGeneric("Grandchild 1.2"));
-
-        child2.child.add(new NodeGeneric("Grandchild 2.1"));
-
-        child3.child.add(new NodeGeneric("Grandchild 3.1"));
-        child3.child.add(new NodeGeneric("Grandchild 3.2"));
-        child3.child.add(new NodeGeneric("Grandchild 3.3"));
-
-        // Create the UI and set up the frame
-        JFrame frame = new JFrame("Generic Tree Example");
-        DrawTreeUI treeUI = new DrawTreeUI(root);
-        frame.add(new JScrollPane(treeUI));
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-    }
-}

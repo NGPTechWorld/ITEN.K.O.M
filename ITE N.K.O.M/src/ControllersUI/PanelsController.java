@@ -3,6 +3,7 @@ package ControllersUI;
 import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.tree.TreeNode;
+import javax.xml.crypto.Data;
 
 import ITENodesOfTrees.ITENodsOfTreeMain;
 import ITENodesOfTrees.Controller.*;
@@ -11,8 +12,10 @@ import ITENodesOfTrees.Module.RectangleNode;
 import ITENodesOfTrees.Module.TreeRectangel;
 import ITENodesOfTrees.View.*;
 import ITETransTrees.ITETransTrees;
+import ITETransTrees.Controller.BinaryTreeController;
 import ITETransTrees.Controller.GenericTreeController;
 import ITETransTrees.Module.NodeGeneric;
+import ITETransTrees.View.DrawerUI;
 import ITETransTrees.View.GenericTreeUI;
 import MainAlgo.ITEmain;
 
@@ -63,7 +66,12 @@ public class PanelsController {
                         }
                     break;
                     case "ITETRANSTREES":
-                        ITETransTrees.main(null);
+                        try {
+                            ITETransTrees.main(null);
+                        } catch (Exception e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
                         ITEmain.mainUI.dispose();
                     break;
                     case "ListOfRectangle":
@@ -315,27 +323,56 @@ public class PanelsController {
                     //Q2 =========================
                     case "CheckFileQ2":
                         try {
-                            GenericTreeController.Import(GenericTreeController.readFileToStringArray());
-                            if(DataBase.G_root!=null){
-                                System.out.println("Genreic Tree:");
-                            GenericTreeController.Export();
-                            GenericTreeController.printGenericTree();
-                                GenericTreeUI.outputUIGB.setVisible(true);
-                            }
+                           
                                 
                         } catch (Exception ee) {
                             
                         }
                     break;
-                    case "EportBinaryFormat":
+                    case "ConvertBtoG":
+                        BinaryTreeController.convertBtoG(DataBase.B_root);
+                        System.out.println("Binary Tree:");
+                        NodeGeneric pp = new NodeGeneric();
+                        pp.value = "parent";
+                        GenericTreeController.dfs(DataBase.B_root,pp);
+                        System.out.println("Genreic Tree:");
+                        GenericTreeController.Export();
+                        GenericTreeController.printGenericTree();
+                        System.out.println("------------------------");
+
+                    break;
+                    case "ConvertGtoB":
                         try {
+                            GenericTreeController.Import(GenericTreeController.readFileToStringArray());
+                            if(DataBase.G_root!=null){
+                                System.out.println("Genreic Tree:");
+                            GenericTreeController.Export();
+                            GenericTreeController.printGenericTree();
+                            }
+                            switchPanels("DrawerUI", "GenericTreeUI", "HomePageTrans");
                             GenericTreeController.convertGtoB(DataBase.G_root);
+                            DrawerUI.drawTreeGeneric.updateTree(DataBase.G_root);
                             NodeGeneric p = new NodeGeneric();
+                            System.out.println("Binary Tree:");
                             p.value = "parent";
                             GenericTreeController.dfs(DataBase.B_root,p);
+                            DrawerUI.treePanel.updateTree(NodeGeneric.convert(DataBase.B_root));
+                            Node.dfs(NodeGeneric.convert(DataBase.B_root));
+                            System.out.println();
+                            System.out.println("------------------------");
                         } catch (Exception ee) {
                             // TODO: handle exception
                         }
+                    break;
+                    case "ClearQ2":
+                        try {
+                            DataBase.resetDataBase();
+                            System.out.println("Clear Done!");
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+
                     break;
                     default:
                         //switchPanels(action);

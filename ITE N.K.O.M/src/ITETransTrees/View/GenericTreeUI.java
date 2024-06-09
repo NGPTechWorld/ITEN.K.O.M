@@ -10,7 +10,6 @@ import java.awt.event.*;
 
 public class GenericTreeUI extends JPanel{
     public static JLabel iconExit,stateCheck;
-    public static OutputUIGB outputUIGB;
     public static JPanel textPanel;
     public GenericTreeUI(){
         initComponents();
@@ -37,23 +36,22 @@ public class GenericTreeUI extends JPanel{
         JPanel btnOpenfile=PanelsController.addBtnPanle(270, 200, "OpenFile", ColorController.firstColorDark());
         PanelsController.addActionOutput(btnOpenfile, "OpenFile");
         JPanel btnCheck=PanelsController.addBtnPanle(520, 200, "Check", ColorController.firstColor());
-        PanelsController.addActionOutput(btnCheck, "CheckFileQ2");
+        PanelsController.addActionOutput(btnCheck, "ConvertGtoB");
         JPanel btnRset=PanelsController.addBtnPanle(770, 200, "Clear", ColorController.secoundColor());
-        PanelsController.addActionOutput(btnRset, "Clear");
+        PanelsController.addActionOutput(btnRset, "ClearQ2");
         stateCheck = LabelController.addLabel("Error!", FontController.getPrimaryFont(1, 20), 20, 250,200, 50);
         stateCheck.setForeground(ColorController.secoundColorlight2());
         //scrollPane.getVerticalScrollBar().setUnitIncrement(40);
         // inpuTextField.setLineWrap(true);
         // inpuTextField.setWrapStyleWord(false); 
-        outputUIGB=new OutputUIGB();
-        add(outputUIGB);
+
         add(inputlabel);
         add(btnRset);
         add(btnOpenfile);
         add(btnCheck);
         add(stateCheck);
         add(titlePage);
-        outputUIGB.setVisible(false);
+
         stateCheck.setVisible(false);
 }
 }

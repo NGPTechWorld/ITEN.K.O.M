@@ -13,14 +13,13 @@ import ITETransTrees.Module.*;
 
 public class GenericTreeController {
 
-    
-    
     public static HashMap<String, String[]> frequency = new HashMap<>();
 
-    public static void printGenericTree(){
-        for(String s:DataBase.genericEdges)
+    public static void printGenericTree() {
+        for (String s : DataBase.genericEdges)
             System.out.println(s);
     }
+
     public static void Export() {
         if (DataBase.G_root == null)
             return;
@@ -62,8 +61,8 @@ public class GenericTreeController {
             if (!Root.containsKey(name))
                 Root.put(name, true);
             String children = "";
-            for (;i<str.length();i++)
-                if(str.charAt(i)!=' ')
+            for (; i < str.length(); i++)
+                if (str.charAt(i) != ' ')
                     children += str.charAt(i);
             frequency.put(name, children.split(","));
             String[] edge = frequency.get(name);
@@ -79,7 +78,7 @@ public class GenericTreeController {
         }
     }
 
-    private static  NodeGeneric build(String name) {
+    private static NodeGeneric build(String name) {
         NodeGeneric node = new NodeGeneric();
         node.value = name;
         if (frequency.containsKey(name)) {
@@ -103,21 +102,19 @@ public class GenericTreeController {
         DataBase.B_root = transformGenericToBinary(root, root.child.size() - 1, null);
     }
 
-    public static  NodeGeneric transformGenericToBinary(NodeGeneric node, int index, NodeGeneric parent) {
+    public static NodeGeneric transformGenericToBinary(NodeGeneric node, int index, NodeGeneric parent) {
         if (node == null)
             return null;
-            NodeGeneric new_node = new NodeGeneric();
+        NodeGeneric new_node = new NodeGeneric();
         new_node.value = node.value;
         if (index == 0 || parent == null)
             new_node.child.add(transformGenericToBinary(null, 0, null));
         else
             new_node.child.add(
-                    transformGenericToBinary(parent.child.get(index - 1), index - 1, parent)
-            );
+                    transformGenericToBinary(parent.child.get(index - 1), index - 1, parent));
         if (!node.child.isEmpty())
             new_node.child.add(
-                    transformGenericToBinary(node.child.get(node.child.size() - 1), node.child.size() - 1, node)
-            );
+                    transformGenericToBinary(node.child.get(node.child.size() - 1), node.child.size() - 1, node));
         else
             new_node.child.add(transformGenericToBinary(null, 0, null));
         return new_node;
@@ -127,10 +124,10 @@ public class GenericTreeController {
         DataBase.G_root = transformBinaryToGeneric(root);
     }
 
-    public static  NodeGeneric transformBinaryToGeneric(NodeGeneric node) {
+    public static NodeGeneric transformBinaryToGeneric(NodeGeneric node) {
         if (node == null)
             return null;
-            NodeGeneric new_node = new NodeGeneric();
+        NodeGeneric new_node = new NodeGeneric();
         new_node.value = node.value;
         if (node.child.get(1) != null) {
             List<NodeGeneric> child = new ArrayList<>();
@@ -142,11 +139,85 @@ public class GenericTreeController {
         return new_node;
     }
 
-    private static  void getChildrenOfNode(NodeGeneric node, List<NodeGeneric> parent) {
+    private static void getChildrenOfNode(NodeGeneric node, List<NodeGeneric> parent) {
         if (node == null)
             return;
         getChildrenOfNode(node.child.get(0), parent);
         parent.add(node);
+    }
+
+    List<String> BinaryToText(NodeGeneric b_root) {
+        List<String> result = new ArrayList<>();
+        GetBinaryEdges(b_root, result);
+        return result;
+    }
+
+    private void GetBinaryEdges(NodeGeneric node, List<String> Edges) {
+        if (node == null)
+            return;
+        if (node.child.get(0) == null && node.child.get(1) == null)
+            return;
+        String edge = node.value + " -> ";
+        if (node.child.get(0) != null)
+            edge += node.child.get(0).value;
+        edge += ",";
+        if (node.child.get(1) != null)
+            edge += node.child.get(1).value;
+        Edges.add(edge);
+        GetBinaryEdges(node.child.get(0), Edges);
+        GetBinaryEdges(node.child.get(1), Edges);
+    }
+
+    void TextToBinary(List<String> s) {
+        frequency.clear();
+        HashMap<String, Boolean> Root = new HashMap<>();
+        for (String str : s) {
+            String name = "";
+            int i;
+            for (i = 0; i < str.length() && str.charAt(i) != '>'; i++) {
+                if (str.charAt(i) == ' ' || str.charAt(i) == '-')
+                    continue;
+                name += str.charAt(i);
+            }
+            while (str.charAt(i) == '>' || str.charAt(i) == ' ')
+                i++;
+            if (!Root.containsKey(name))
+                Root.put(name, true);
+            String children = "";
+            for (; i < str.length(); i++)
+                if (str.charAt(i) != ' ')
+                    children += str.charAt(i);
+            frequency.put(name, children.split(","));
+            String[] edge = frequency.get(name);
+            for (String e : edge) {
+                if (e.isEmpty())
+                    continue;
+                Root.put(e, false);
+            }
+        }
+        for (Map.Entry h : Root.entrySet()) {
+            if ((boolean) h.getValue()) {
+                DataBase.B_root = BinaryBuild((String) h.getKey());
+                break;
+            }
+        }
+    }
+
+    private NodeGeneric BinaryBuild(String key) {
+        if (key.isEmpty())
+            return null;
+        NodeGeneric node = new NodeGeneric();
+        node.value = key;
+        if (frequency.containsKey(key)) {
+            if (frequency.get(key).length == 2) {
+                node.child.add(BinaryBuild(frequency.get(key)[0]));
+                node.child.add(BinaryBuild(frequency.get(key)[1]));
+            } else {
+                node.child.add(BinaryBuild(frequency.get(key)[0]));
+                node.child.add(null);
+            }
+        }
+        return node;
     }
 
     public static String[] readFileToStringArray() {
@@ -168,8 +239,8 @@ public class GenericTreeController {
             FileWriter fileOutput = new FileWriter(DataBase.outputFile);
             BufferedWriter writer = new BufferedWriter(fileOutput);
             for (String row : DataBase.genericEdges) {
-                    writer.write(row);
-                    writer.newLine();
+                writer.write(row);
+                writer.newLine();
             }
             Desktop desktop = Desktop.getDesktop();
             desktop.edit(DataBase.outputFile);

@@ -11,4 +11,7 @@ public class NodeGeneric {
         value=string;
         child=new ArrayList<>();
     }
+    public NodeGeneric(){
+        child=new ArrayList<>();
+    }
 }

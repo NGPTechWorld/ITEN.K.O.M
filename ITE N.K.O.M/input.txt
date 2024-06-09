@@ -1,5 +1,0 @@
-A -> B,C,D,E,F
-B ->G,H,I,J
-H ->K,L,M,N
-G ->P,Q,R,S,T
-F ->U,V,W

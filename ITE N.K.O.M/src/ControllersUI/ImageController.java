@@ -7,8 +7,11 @@ import javax.swing.JLabel;
 import java.awt.Image;
 import java.io.File;
 
+
 public class ImageController {
-    static String imagesPath = "resources\\images\\";
+
+    static String imagesPath = "resources/images/";
+
     public static void playSound(String filePath) {
         try {
             File soundFile = new File(filePath);

@@ -25,7 +25,7 @@ public class GenericTreeUI extends JPanel{
         backP.setBounds(1000, 50, 60, 60);
         backP.setLayout(new BorderLayout());
         backP.setOpaque(false);
-        PanelsController.addActionPanel(backP,"backCLC");
+        PanelsController.addActionPanel(backP,"back");
         backP.add(ImageController.addPhoto("back.png", 60, 60),BorderLayout.CENTER);
         add(backP);
         

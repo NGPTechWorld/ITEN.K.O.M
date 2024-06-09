@@ -187,37 +187,50 @@ public class PanelsController {
                         }
                     break;
                     case "AddRec":
-                        if(!(ListOfRectangle.addNodeTree.nameText.getText().equals("") && ListOfRectangle.addNodeTree.widthText.getText().equals("")  && ListOfRectangle.addNodeTree.heightText.getText().equals("") )){
+                        if(!(ListOfRectangle.addNodeTree.nameText.getText().equals("") | ListOfRectangle.addNodeTree.widthText.getText().equals("")  | ListOfRectangle.addNodeTree.heightText.getText().equals("") )){
                             String name=ListOfRectangle.addNodeTree.nameText.getText();
                             int width=Integer.parseInt(ListOfRectangle.addNodeTree.widthText.getText());
                             int height=Integer.parseInt(ListOfRectangle.addNodeTree.heightText.getText());
-                            DataBase.Rectangles.add(new Node(name, width, height));
-                            ListOfRectangle.numRecNow.setText(String.valueOf(DataBase.Rectangles.size()));
-                            ListOfRectangle.addNodeTree.nameText.setText("");
-                            ListOfRectangle.addNodeTree.widthText.setText("");
-                            ListOfRectangle.addNodeTree.heightText.setText("");
+                            if(!(width ==0 || height ==0)){
+                                DataBase.Rectangles.add(new Node(name, width, height));
+                                ListOfRectangle.numRecNow.setText(String.valueOf(DataBase.Rectangles.size()));
+                                ListOfRectangle.addNodeTree.nameText.setText("");
+                                ListOfRectangle.addNodeTree.widthText.setText("");
+                                ListOfRectangle.addNodeTree.heightText.setText("");
+                            }else{
+                                System.out.println("Error Input");
+                            }
+                        }else{
+                            System.out.println("Error Input");
                         }
                     break;
                     case "AddTreeBuild":
                         try {
-                                if(!(TreeFormatUI.addNodeTree.nameText.getText().equals("") && TreeFormatUI.addNodeTree.widthText.getText().equals("")  && TreeFormatUI.addNodeTree.heightText.getText().equals("") )){
+                                if(!(TreeFormatUI.addNodeTree.nameText.getText().equals("") || TreeFormatUI.addNodeTree.widthText.getText().equals("")  | TreeFormatUI.addNodeTree.heightText.getText().equals("") )){
                                     int width=Integer.parseInt(TreeFormatUI.addNodeTree.widthText.getText());
                                     int height=Integer.parseInt(TreeFormatUI.addNodeTree.heightText.getText());
-                                    TreeFormatController.addNodeToTree(TreeFormatUI.addNodeTree.nameText.getText(), height, width);
-                                    if(TreeFormatController.isEndTree(TreeFormatController.treeRoot)){
-                                        TreeFormatUI.addNodeTree.widthText.setText("");
-                                        TreeFormatUI.addNodeTree.heightText.setText("");
-                                        TreeFormatUI.addNodeTree.nameText.setText("");
-                                        TreeFormatUI.addNodeTree.nameText.setVisible(false);
-                                        TreeFormatUI.addNodeTree.widthText.setVisible(false);
-                                        TreeFormatUI.addNodeTree.heightText.setVisible(false);
-                                        TreeFormatUI.addNodeTree.btnAdd.setVisible(false);
-                                        TreeFormatUI.addNodeTree.titleHeight.setVisible(false);
-                                        TreeFormatUI.addNodeTree.titleName.setVisible(false);
-                                        TreeFormatUI.addNodeTree.titleWidth.setVisible(false);
-                                        TreeFormatUI.addNodeTree.btncheck.setVisible(true);
-                                        DataBase.rootRectangle=TreeFormatController.treeRoot;
+                                    if(!(width ==0 || height ==0)){
+                                            TreeFormatController.addNodeToTree(TreeFormatUI.addNodeTree.nameText.getText(), height, width);
+                                        if(TreeFormatController.isEndTree(TreeFormatController.treeRoot)){
+                                            TreeFormatUI.addNodeTree.widthText.setText("");
+                                            TreeFormatUI.addNodeTree.heightText.setText("");
+                                            TreeFormatUI.addNodeTree.nameText.setText("");
+                                            TreeFormatUI.addNodeTree.nameText.setVisible(false);
+                                            TreeFormatUI.addNodeTree.widthText.setVisible(false);
+                                            TreeFormatUI.addNodeTree.heightText.setVisible(false);
+                                            TreeFormatUI.addNodeTree.btnAdd.setVisible(false);
+                                            TreeFormatUI.addNodeTree.titleHeight.setVisible(false);
+                                            TreeFormatUI.addNodeTree.titleName.setVisible(false);
+                                            TreeFormatUI.addNodeTree.titleWidth.setVisible(false);
+                                            TreeFormatUI.addNodeTree.btncheck.setVisible(true);
+                                            DataBase.rootRectangle=TreeFormatController.treeRoot;
+                                        }
+                                    }else{
+                                        System.out.println("Error Input");
                                     }
+                                    
+                                }else{
+                                    System.out.println("Error Input");
                                 }
                         } catch (Exception i) {
                             

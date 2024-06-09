@@ -55,6 +55,8 @@ public class TreeRectangel {
             return true;
         }
         // Check merge leftChild with rightChild
+        if(root.width ==0 || root.height ==0)
+            return false;
         if (root.value.equals("-") || root.value.equals("–")) {
             if (root.leftChild.width != root.rightChild.width)
                 return false;

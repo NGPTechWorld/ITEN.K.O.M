@@ -48,6 +48,7 @@ public class Node {
         if (node == null)
             return;
         System.out.print(node.value + " ");
+        System.out.println(node.height);
         dfs(node.leftChild);
         dfs(node.rightChild);
     }

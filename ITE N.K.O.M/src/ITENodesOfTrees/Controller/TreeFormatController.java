@@ -9,12 +9,13 @@ public class TreeFormatController {
 
     public static void addNodeToTree(String name, int height, int width) {
         Node newNode = new Node(name, width, height);
+        System.out.println(width +" "+height);
         if (treeRoot == null) {
             System.out.println("Root");
             treeRoot = newNode;
         } else {
             ch = 0;
-            find(treeRoot, null, name);
+            find(treeRoot, null, name,height,width);
         }
 
         TreeFormatUI.treepanel.updateTree(treeRoot);
@@ -26,7 +27,6 @@ public class TreeFormatController {
             return root;
         } else {
             if (father != null) {
-                System.out.println("H");
                 searchNode(root.leftChild, root);
                 if (!(root.value.equals("|") && root.value.equals("-") && root.value.equals("-")))
                     searchNode(root.rightChild, root);
@@ -35,7 +35,7 @@ public class TreeFormatController {
         return null;
     }
 
-    static void find(Node root, Node father, String v) {
+    static void find(Node root, Node father, String v, int height, int width) {
         // if(father!=null)
         // if(!(father.value.equals("|")&&father.value.equals("-")&&father.value.equals("-"))){
         // return;
@@ -46,18 +46,18 @@ public class TreeFormatController {
             return;
         }
         if (root.leftChild == null) {
-            root.leftChild = new Node(v);
+            root.leftChild = new Node(v,width,height);
             ch = 1;
             return;
         }
-        find(root.leftChild, root, v);
+        find(root.leftChild, root, v,height,width);
         if (ch == 0) {
             if (root.rightChild == null) {
-                root.rightChild = new Node(v);
+                root.rightChild = new Node(v,width,height);
                 ch = 1;
                 return;
             }
-            find(root.rightChild, root, v);
+            find(root.rightChild, root, v,height,width);
         }
     }
 
